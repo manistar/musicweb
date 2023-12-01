@@ -62,6 +62,13 @@ class validate extends database
             $insert = $this->quick_insert("playlist", $data, "Data uploaded Successfully");
         }
     }
+    function getUserIdFromPlaylistId($userID, $productId) {
+        $data =  $this->getall("users", "ID = ? and userID = ?", [$productId, $userID], "status");
+        if (!is_array($data) || empty($data)) {
+            return 1;
+        }
+        return $data[0]['status']; // Assuming you expect multiple results, use $data[0] to access the first result
+    }
 }
 ?>
 

@@ -125,7 +125,7 @@
                                 </span>
                             </div>
                             <div class="album__title">
-                                <h3><a href="?p=single-release&ID=<?= $row['ID'] ?>"><?=$row['music_title'];?></a></h3>
+                                <h3><a href="?p=single-release&ID=<?= $row['userID'] ?>"><?=$row['music_title'];?></a></h3>
                                 <span><a href="?p=single-release&ID=<?= $row['ID'] ?>"><?=$row['artist_name'];?></a></span>
                             </div>
                         </div>

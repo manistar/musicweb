@@ -32,10 +32,10 @@
                         <ul class="main__list main__list--playlist main__list--dashbox">
 
                         <!-- foreach Code here -->
-                    <?php
-                    if ($single_release->rowCount() > 0) {
-                        foreach ($single_release as $row) { 
-                            // $user_tracks = $d->getall("playlist", "ID = ?", [$row['userID']]);
+                      <?php  
+                        if ($single_release->rowCount() > 0) {
+                            foreach ($single_release as $row) {
+                                // $single_release = $d->getall("playlist", "ID = ?", [$row['userID'])];
                             ?>
                             <li class="single-item">
                                 <a data-link data-title="<?= $row['music_title'];?>" data-artist="Ava Cornish"
@@ -72,6 +72,8 @@
             }
             ?>
                             <!-- End of loop -->
+
+     
 
                             <!-- <li class="single-item">
                                 <a data-link data-title="Mood Swings" data-artist="Yeaji"
