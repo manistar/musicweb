@@ -111,6 +111,7 @@ class database
     // CODE: $members = $d->getall(from: 'members', fetch: "moredetails");
     // get info from database with  no conditions but with a limit
     // CODE: $members = $d->getall(from: 'members', where: "LIMTI 10" fetch: "moredetails");
+   
     function getall($from, $where = "", array $data = [], $select = "*", $fetch = "details")
     {
         if (substr($where, 0, 5) == "LIMIT" || substr($where, 0, 5) == "limit" || $where == "") {
@@ -120,6 +121,13 @@ class database
         }
         $q->execute($data);
         return $this->getmethod($q, $fetch);
+    }
+
+// To get number of trending in playlist
+    public function getTrendingMusic($minPlayCount = 5) {
+        $sql = "play_count > ?";
+        $params = [$minPlayCount];
+        return $this->getall("playlist", $sql, $params, "*", "moredetails");
     }
 
     // USEAGE
@@ -924,6 +932,8 @@ class database
         // var_dump($word);
         return $word;
     }
+  
+
     function get_email_template($name)
     {
         return $this->getall("email_template", "name = ?", [$name]);

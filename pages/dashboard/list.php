@@ -638,20 +638,25 @@
                             <h2><i class="far fa-microphone"></i><a href="#">Trending</a></h2>
                         </div>
                     </div>
-
+                    <!-- TRENDING -->
                     <div class="col-12">
                         <ul class="main__list">
+                        
+                    <?php 
+                    if(!empty($trending_music)) {
+                        foreach ($trending_music as $row) {
+                            ?>
                             <li class="single-item">
-                                <a data-link data-title="Love Me Like" data-artist="Eille Gold"
-                                    data-img="musica/assets/img/covers/cover6.jpg" href="musica/assets/audio/preview2.mp3"
+                                <a data-link data-title="<?= $row['music_title']; ?>" data-artist="<?= $row['artist_name']; ?>"
+                                    data-img="upload/<?= $row['music_thumnail']; ?>" href="upload/<?= $row['music_file']; ?>"
                                     class="single-item__cover">
-                                    <img src="musica/assets/img/covers/cover6.jpg" alt>
+                                    <img src="upload/<?= $row['music_thumnail']; ?>" alt>
                                     <i class="far fa-play"></i>
                                     <i class="far fa-pause"></i>
                                 </a>
                                 <div class="single-item__title">
-                                    <h4><a href="#">Love Me Like</a></h4>
-                                    <span><a href="artist.html">Eille Gold</a></span>
+                                    <h4><a href="#"><?= $row['music_title']; ?></a></h4>
+                                    <span><a href="?p=artist"><?= $row['artist_name']; ?></a></span>
                                 </div>
                                 <span class="single-item__time single-item__time--live">LIVE</span>
                                 <div class="dropdown moremenu dropleft">
@@ -672,130 +677,13 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="single-item">
-                                <a data-link data-title="Enjoy Yourself" data-artist="Prince"
-                                    data-img="musica/assets/img/covers/cover9.jpg" href="musica/assets/audio/preview3.mp3"
-                                    class="single-item__cover">
-                                    <img src="musica/assets/img/covers/cover9.jpg" alt>
-                                    <i class="far fa-play"></i>
-                                    <i class="far fa-pause"></i>
-                                </a>
-                                <div class="single-item__title">
-                                    <h4><a href="#">Enjoy Yourself</a></h4>
-                                    <span><a href="artist.html">Prince</a></span>
-                                </div>
-                                <span class="single-item__time">5:05</span>
-                                <div class="dropdown moremenu dropleft">
-                                    <button class="btn" type="button" data-toggle="dropdown">
-                                        <i class="far fa-ellipsis-v-alt"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="moremenu">
-                                        <a class="dropdown-item" href="#"><i class="far fa-layer-plus"></i> Add
-                                            To Playlist</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-heart"></i>
-                                            Favourite</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-share-alt"></i>
-                                            Share</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-info-circle"></i>
-                                            Music Info</a>
-                                        <a class="dropdown-item" href="#"><i class="fal fa-download"></i>
-                                            Download</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="single-item">
-                                <a data-link data-title="The Climb Back" data-artist="Elton Jhon"
-                                    data-img="musica/assets/img/covers/cover14.jpg" href="musica/assets/audio/preview1.mp3"
-                                    class="single-item__cover">
-                                    <img src="musica/assets/img/covers/cover14.jpg" alt>
-                                    <i class="far fa-play"></i>
-                                    <i class="far fa-pause"></i>
-                                </a>
-                                <div class="single-item__title">
-                                    <h4><a href="#">The Climb Back</a></h4>
-                                    <span><a href="artist.html">Elton Jhon</a></span>
-                                </div>
-                                <span class="single-item__time">4:05</span>
-                                <div class="dropdown moremenu dropleft">
-                                    <button class="btn" type="button" data-toggle="dropdown">
-                                        <i class="far fa-ellipsis-v-alt"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="moremenu">
-                                        <a class="dropdown-item" href="#"><i class="far fa-layer-plus"></i> Add
-                                            To Playlist</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-heart"></i>
-                                            Favourite</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-share-alt"></i>
-                                            Share</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-info-circle"></i>
-                                            Music Info</a>
-                                        <a class="dropdown-item" href="#"><i class="fal fa-download"></i>
-                                            Download</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="single-item">
-                                <a data-link data-title="More Than My" data-artist="Morgan"
-                                    data-img="musica/assets/img/covers/cover11.jpg" href="musica/assets/audio/preview2.mp3"
-                                    class="single-item__cover">
-                                    <img src="musica/assets/img/covers/cover11.jpg" alt>
-                                    <i class="far fa-play"></i>
-                                    <i class="far fa-pause"></i>
-                                </a>
-                                <div class="single-item__title">
-                                    <h4><a href="#">More Than My</a></h4>
-                                    <span><a href="artist.html">Morgan</a></span>
-                                </div>
-                                <span class="single-item__time">2:20</span>
-                                <div class="dropdown moremenu dropleft">
-                                    <button class="btn" type="button" data-toggle="dropdown">
-                                        <i class="far fa-ellipsis-v-alt"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="moremenu">
-                                        <a class="dropdown-item" href="#"><i class="far fa-layer-plus"></i> Add
-                                            To Playlist</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-heart"></i>
-                                            Favourite</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-share-alt"></i>
-                                            Share</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-info-circle"></i>
-                                            Music Info</a>
-                                        <a class="dropdown-item" href="#"><i class="fal fa-download"></i>
-                                            Download</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="single-item">
-                                <a data-link data-title="Girls Like You" data-artist="Dababy"
-                                    data-img="musica/assets/img/covers/cover12.jpg" href="musica/assets/audio/preview3.mp3"
-                                    class="single-item__cover">
-                                    <img src="musica/assets/img/covers/cover12.jpg" alt>
-                                    <i class="far fa-play"></i>
-                                    <i class="far fa-pause"></i>
-                                </a>
-                                <div class="single-item__title">
-                                    <h4><a href="#">Girls Like You</a></h4>
-                                    <span><a href="artist.html">Dababy</a></span>
-                                </div>
-                                <span class="single-item__time">2:03</span>
-                                <div class="dropdown moremenu dropleft">
-                                    <button class="btn" type="button" data-toggle="dropdown">
-                                        <i class="far fa-ellipsis-v-alt"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="moremenu">
-                                        <a class="dropdown-item" href="#"><i class="far fa-layer-plus"></i> Add
-                                            To Playlist</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-heart"></i>
-                                            Favourite</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-share-alt"></i>
-                                            Share</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-info-circle"></i>
-                                            Music Info</a>
-                                        <a class="dropdown-item" href="#"><i class="fal fa-download"></i>
-                                            Download</a>
-                                    </div>
-                                </div>
-                            </li>
+                                    <?php
+                        }
+                    } else {
+                        echo "No trending music found.";
+                    }
+                    ?>
+
                         </ul>
                     </div>
                 </div>

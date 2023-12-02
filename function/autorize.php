@@ -44,15 +44,6 @@ class validate extends database
                 }
         }
     }
-    //    function upload_data($play_track){
-    //     $d    = new database;
-    //     $data = $_POST['ID'] = uniqid();
-    //     $data = $_POST['userID'];
-    //     $info = $this->validate_form($play_track, "playlist");
-    //     if(is_array($info)){
-    //         $insert = $this->quick_insert("playlist", $info, "Data uploaded Successfully");
-    //     }
-    // }   
 
     function upload_data($play_track){
         $data = $_POST['ID'] = uniqid();
@@ -62,12 +53,43 @@ class validate extends database
             $insert = $this->quick_insert("playlist", $data, "Data uploaded Successfully");
         }
     }
-    function getUserIdFromPlaylistId($userID, $productId) {
-        $data =  $this->getall("users", "ID = ? and userID = ?", [$productId, $userID], "status");
-        if (!is_array($data) || empty($data)) {
-            return 1;
+
+   
+    // function PlayedMoreThan5x($userID) {
+    //     $data = $this->validate_form($userID, "playlist", "insert");
+    //     if($data == NULL) {
+    //     $_SESSION['userSession'] = htmlspecialchars($data['userID']); 
+    //     $this->update("playlist", $data, "play_count = play_count + 1", "ID = ?", [$userID]);
+    //     }
+    // }
+
+    function PlayedMoreThan5x($userID) {
+        $d = new Database;
+    
+        // Validate the form data (modify the parameters based on your actual validation logic)
+        $data = $this->validate_form(["userID" => $userID], "playlist", "insert");
+    
+        // Check if validation is successful
+        if ($data !== false) {
+            // Update the playlist with play_count + 1 where userID equals $userID
+            $this->update("playlist", ["play_count" => "play_count + 1"], "ID = ?", [$userID]);
+    
+            // Optionally, update the user session
+            $_SESSION['userSession'] = htmlspecialchars($data['userID']);
         }
-        return $data[0]['status']; // Assuming you expect multiple results, use $data[0] to access the first result
+    }
+
+    function add_to_cart($add_cart) {
+        $data = $this->validate_form($add_cart, "cart", "insert");
+        if($data == NULL) {
+            $data =  $this->validate_form($add_cart);
+            if(!is_array($data)) { return null; }
+            $pID = $data['productID'];
+            $uID = $data['userID'];
+            $this->update("cart", $data, "productID = '$pID' and userID = '$uID'");
+        }
+        $json = ["function"=>["changetext", "data"=>["cat_no", $this->no_products($data['userID'])]]];
+        return json_encode($json);
     }
 }
 ?>

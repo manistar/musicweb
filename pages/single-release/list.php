@@ -37,18 +37,28 @@
                             foreach ($single_release as $row) {
                                 // $single_release = $d->getall("playlist", "ID = ?", [$row['userID'])];
                             ?>
+                            <form action="passer" id="foo" onsubmit="return false">
+                            <input type="hidden" name="play_to_add" value="">
                             <li class="single-item">
-                                <a data-link data-title="<?= $row['music_title'];?>" data-artist="Ava Cornish"
-                                    data-img="upload/<?= $row['music_thumnail'];?>" href="upload/<?=$row['music_file'];?>"
-                                    class="single-item__cover">
-                                    <img src="upload/<?= $row['music_thumnail'];?>" alt>
-                                    <i class="far fa-play"></i>
-                                    <i class="far fa-pause"></i>
-                                </a>
-                                <div class="single-item__title">
-                                    <h4><a href="#"><?=$row['music_title'];?></a></h4>
+							<!-- <input type="hidden" name="page" value="shop"> -->
+                            <div id="custommessage"></div>
+                            <a data-link data-title="<?= $row['music_title']; ?>" data-artist="Ava Cornish"
+                            data-img="upload/<?= $row['music_thumnail']; ?>" href="upload/<?= $row['music_file']; ?>"
+                            class="single-item__cover">
+                            <img src="upload/<?= $row['music_thumnail']; ?>" alt>
+                            
+                            <button type="submit" value="submit" onclick="PlayedMoreThan5x('{$row['userID']}')"> 
+                                        <i class="far fa-play"></i>
+                                        <i class="far fa-pause"></i>
+                                        </button>
+                                        </form>
+                                    </a>
+                               
+                                                <div class="single-item__title">
+                                                    <h4><a href="#"><?=$row['music_title'];?></a></h4>
                                     <span><a href="artist.html"><?=$row['artist_name']?></a></span>
                                 </div>
+                                
                                 <span class="single-item__time">3:05</span>
                                 <div class="dropdown moremenu dropleft">
                                     <button class="btn" type="button" data-toggle="dropdown">
@@ -65,6 +75,7 @@
                                     </div>
                                 </div>
                             </li>
+                            
                             <?php
                 }
             } else {

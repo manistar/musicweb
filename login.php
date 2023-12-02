@@ -39,11 +39,11 @@
 
 
         <!--  -->
-        <section class="container">
+        <section class="">
             <div class="container-fluid">
                 <div class="row row--grid">
 
-                    <div class="col-lg-4 mt-4 mx-auto">
+                    <div class="col-lg-4 mt-5 mx-auto">
                         <div class="login">
                             <div class="">
 

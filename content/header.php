@@ -154,12 +154,12 @@
                         echo '<div class="header__action header__action--signin">';
                         echo '<a class="header__action-btn" href="#">';
                         echo '    <a class="header__action-btn" href="#">';
-                        echo '        <img src="upload/'. $data['upload_image'] .'" alt>';
+                        echo '        <img src="upload/profile/'. $data['upload_image'] .'" alt>';
                         echo '    </a>';
                         echo '<div class="header__drop">';
                         echo '<a href="#">Welcome '.$data['first_name'].' !</a>';
                             echo '<a href="?p=profile.php"><i class="far fa-user"></i> My Profile</a>';
-                            echo '<a href="?p=profile-setting.php"><i class="fal fa-cog"></i> Profile Settings</a>';
+                            echo '<a href="?p=profile-settings"><i class="fal fa-cog"></i> Profile Settings</a>';
                             echo '<a href="?p=favourites.php"><i class="fal fa-heart"></i> My Favourites</a>';
                             echo '<a href="?p=orders.php"><i class="fal fa-shopping-cart"></i> My Orders</a>';
                             echo '<a href="index?logout"><i class="far fa-lock"></i> Logout</a>';
@@ -221,49 +221,49 @@
 
             <ul class="sidebar__nav">
                 <li class="sidebar__nav-item">
-                    <a href="?p=dashboard.php.php" class="sidebar__nav-link sidebar__nav-link--active"> <i
+                    <a href="?p=dashboard" class="sidebar__nav-link sidebar__nav-link--active"> <i
                             class="far fa-home"></i> <span>Home</span></a>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=profile.php" class="sidebar__nav-link"> <i class="far fa-user"></i> <span>My
+                    <a href="?p=profile" class="sidebar__nav-link"> <i class="far fa-user"></i> <span>My
                             Profile</span></a>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=profile-setting.php" class="sidebar__nav-link"> <i class="far fa-cog"></i> <span>Profile
+                    <a href="?p=profile-settings" class="sidebar__nav-link"> <i class="far fa-cog"></i> <span>Profile
                             Settings</span></a>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=favourites.php" class="sidebar__nav-link"> <i class="far fa-heart"></i> <span>My
+                    <a href="?p=favourites" class="sidebar__nav-link"> <i class="far fa-heart"></i> <span>My
                             Favourites</span></a>
                 </li>
                 <li class="?p=sidebar__nav-item">
-                    <a href="orders.php" class="sidebar__nav-link"> <i class="far fa-shopping-cart"></i> <span>My
+                    <a href="orders" class="sidebar__nav-link"> <i class="far fa-shopping-cart"></i> <span>My
                             Orders</span></a>
                 </li>
                 <li>
                     <span class="sidebar-title">Music</span>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=free-music.php" class="sidebar__nav-link"> <i class="far fa-headphones"></i> <span>Free
+                    <a href="?p=free-music" class="sidebar__nav-link"> <i class="far fa-headphones"></i> <span>Free
                             Music</span></a>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=artist.php" class="sidebar__nav-link"> <i class="far fa-user-friends"></i>
+                    <a href="?p=artist" class="sidebar__nav-link"> <i class="far fa-user-friends"></i>
                         <span>Artists</span></a>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=release.php" class="sidebar__nav-link"> <i class="far fa-music"></i>
+                    <a href="?p=release" class="sidebar__nav-link"> <i class="far fa-music"></i>
                         <span>Release</span></a>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=albums.php" class="sidebar__nav-link"> <i class="far fa-microphone"></i>
+                    <a href="?p=albums" class="sidebar__nav-link"> <i class="far fa-microphone"></i>
                         <span>Albums</span></a>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=genres.php" class="sidebar__nav-link"> <i class="far fa-gem"></i> <span>Genres</span></a>
+                    <a href="?p=genres" class="sidebar__nav-link"> <i class="far fa-gem"></i> <span>Genres</span></a>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=event.php" class="sidebar__nav-link"> <i class="far fa-calendar-alt"></i>
+                    <a href="?p=event" class="sidebar__nav-link"> <i class="far fa-calendar-alt"></i>
                         <span>Events</span></a>
                 </li>
                 <li>
@@ -278,7 +278,7 @@
                         <ul class="sidebar__menu">
                             <li><a href="?p=dashboard.php"> <i class="far fa-music"></i> Dashboard</a></li>
                             <li><a href="?p=profile.php"> <i class="far fa-music"></i> Profile</a></li>
-                            <li><a href="?p=profile-setting.php"> <i class="far fa-music"></i> Profile Setting</a></li>
+                            <li><a href="?p=profile-settings"> <i class="far fa-music"></i> Profile Setting</a></li>
                             <li><a href="?p=favourites.php"> <i class="far fa-music"></i> Favouites</a></li>
                             <li><a href="?p=orders.php"> <i class="far fa-music"></i> Orders</a></li>
                             <li><a href="?p=playlist.php"> <i class="far fa-music"></i> Playlist</a></li>

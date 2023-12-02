@@ -53,6 +53,7 @@ $user_registration = [
         "input_type" => "text",
         "type" => "input"
     ],
+    
 
     "last_name" => [
         "title" => "Last Name",

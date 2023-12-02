@@ -107,7 +107,7 @@ class content extends database
 
     function  get_header()
     {
-        $info =  "<div class='mb-3 form-group col-12 col-md-6 " . $this->data['global_class'] . "'>
+        $info =  "<div class='mb-3 form-groupcol-12 col-md-6 " . $this->data['global_class'] . "'>
         <label>" . ucwords($this->data['title']) . " <span class='text-danger'>" . $this->data['star'] . "</span></label>
         <div class='controls'>" . $this->placeholder;
         if (isset($this->data['description'])) {
