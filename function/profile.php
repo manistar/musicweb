@@ -21,12 +21,14 @@ class settings extends database{
             $uID = $data['ID'];
             $password = $data['password'];
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $this->update("users", ["password" => $hashedPassword], "ID = 'uID'");
+            $this->update("users", ["password" => $hashedPassword], "ID = '$uID'");
         }
         if($data){
             $d->message("password has been Updated Successfully", "success");
         }
     }
+
+
     
 }
 // if($data == NULL) {
