@@ -97,7 +97,7 @@ $change_password = [
         "input_type" => "password",
         "type" => "input"
     ],
-    // "input_data"=>$data,
+    "input_data"=>$data,
 ];
 
 ?>
