@@ -390,7 +390,7 @@ class database
         if (isset($datas["password"]) && isset($datas['confirm_password']) && !empty($data['password'])) {
             if ($_POST['password'] != $_POST['confirm_password']) {
                 $err = true;
-                echo $this->message("Password and confrim password do not match", "error");
+                echo $this->message("Password and confirm password does not match", "error");
                 return null;
             }
             // $info['password'] = password_hash($_POST['password'],  PASSWORD_DEFAULT);

@@ -34,6 +34,7 @@ if (isset($_POST['update_password'])) {
 }
 
 if (isset($_POST['play_to_add'])) {
+    $userID = 'userID';
     require_once "include/auth-ini.php";
     echo $v->PlayedMoreThan5x($userID);
 }

@@ -72,7 +72,8 @@ class validate extends database
         // Check if validation is successful
         if ($data !== false) {
             // Update the playlist with play_count + 1 where userID equals $userID
-            $this->update("playlist", ["play_count" => "play_count + 1"], "ID = ?", [$userID]);
+            $uID = $data['userID'];
+            $this->update("playlist", ["play_count" => "play_count + 1"], "userID = '$uID'");
     
             // Optionally, update the user session
             $_SESSION['userSession'] = htmlspecialchars($data['userID']);
