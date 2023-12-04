@@ -39,6 +39,7 @@ $user_validating = [
         "input_type" => "password",
         "type" => "input"
     ],
+    
 ];
 
 $user_registration = [

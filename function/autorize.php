@@ -64,10 +64,10 @@ class validate extends database
     // }
 
     function PlayedMoreThan5x($userID) {
-        $d = new Database;
+        $d = new Database;  
     
         // Validate the form data (modify the parameters based on your actual validation logic)
-        $data = $this->validate_form(["userID" => $userID], "playlist", "insert");
+        $data = $this->validate_form(["userID" => $userID]);
     
         // Check if validation is successful
         if ($data !== false) {
@@ -79,6 +79,8 @@ class validate extends database
             $_SESSION['userSession'] = htmlspecialchars($data['userID']);
         }
     }
+
+ 
 
     function add_to_cart($add_cart) {
         $data = $this->validate_form($add_cart, "cart", "insert");

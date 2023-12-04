@@ -13,6 +13,9 @@ $v = new validate;
 require_once 'function/profile.php';
 $s = new settings;
 
+// if(!isset($data)) {
+//     $data = [];
+// }
 
     $userID = htmlspecialchars($_SESSION['userSession']);
     $data = $d->getall("users", "ID = ?", [$userID], fetch:"details");

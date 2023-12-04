@@ -37,16 +37,17 @@
                             foreach ($single_release as $row) {
                                 // $single_release = $d->getall("playlist", "ID = ?", [$row['userID'])];
                             ?>
-                            <form action="passer" id="foo">
+                            <form action="passer" id="foo<?= $row['userID'] ?>">
                             <input type="hidden" name="play_to_add" value="">
                             <input type="hidden" name="userID" value="<?= $data['userID']; ?>">
                                         <li class="single-item">
+                                            <!-- <input type="submit" name="play" value="play me"> -->
                                             <a data-link data-title="<?= $row['music_title']; ?>" data-artist="Ava Cornish"
                                                 data-img="upload/<?= $row['music_thumnail']; ?>" href="upload/<?= $row['music_file']; ?>"
                                                 class="single-item__cover">
                                                 <img src="upload/<?= $row['music_thumnail']; ?>" alt>
                                                 <div id="custommessage"></div>
-                                                <button type="submit" value="submit">
+                                                <button id="Button" onclick="submitform('foo<?= $row['userID'] ?>')" type="submit" value="submit">
                                                     <i class="far fa-play"></i>
                                                     <i class="far fa-pause"></i>
                                                 </button>

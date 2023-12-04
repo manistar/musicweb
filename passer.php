@@ -39,6 +39,14 @@ if (isset($_POST['play_to_add'])) {
     echo $v->PlayedMoreThan5x($userID);
 }
 
+if(isset($_POST['add_to_cart'])) {
+    require_once "inis/ini.php";
+    require_once "consts/shop.php";
+     require_once "function/shop.php";
+    //  $s = new shop;
+     echo $s->add_to_cart($add_cart);
+    } 
+
 // Search Key
 require_once "include/database.php";
 $d = new database;

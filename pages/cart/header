@@ -1,0 +1,26 @@
+<!-- <div class="header__drop">
+            
+                            <?php
+                            if ($product_cart->rowCount() > 0) {
+                                foreach ($product_cart as $row) {
+                                    $carting = $d->getall("products", "ID = ?", [$row['productID']]);
+                                    ?>
+                                    <div class="header__product">
+                                        <img src="musica/assets/img/store/<?= $carting['img']; ?>" alt>
+                                        <p><a href="product.php">
+                                                <?= $carting['title']; ?>
+                                            </a></p>
+                                        <span>Price: $
+                                            <?= number_format(substr($carting['amount'], 1)); ?>
+                                        </span>
+                                        <button type="submit" value="submit"><i class="fal fa-times"></i></button>
+                                    </div>
+                                    <?php
+                                }
+                            } else {
+                                echo "No data found";
+                            }
+                            ?>
+
+                            <a href="?p=cart" class="header__all">Go to cart</a>
+                        </div> -->

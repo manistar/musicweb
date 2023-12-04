@@ -32,17 +32,18 @@ $play_track = [
         "is_required" => true,
         "input_type" => "text",
         "type" => "input",
-        "unique"=>""
     ],
     "album_desc" => [
         "title" => "Description",
         "global_class" => "col-lg-12",
-        "name"=> "album_desc",
+        "name" => "album_desc",
         "placeholder" => "Enter Description",
         "is_required" => true,
-        "input_type" => "text",
-        "type" => "input"
+        "input_type" => "textarea",  // Change to "textarea"
+        "type" => "textarea", 
+        "unique"=>""    
     ],
+    "label" => ["placeholder" => "Make your selection", "global_class" => "col-md-4", "is_required" => true, "options" => ["latest" => "New Track", "old" => "Oldies"], "type" => "select"],
     "music_thumnail"=>["input_type"=>"file", "global_class" => "col-lg-12", "path"=>"upload/", "file_name"=>"thumbnail_" .uniqid(), "formart"=>["jpg", "png"]],
     "music_file"=>["input_type"=>"file", "global_class" => "col-lg-12", "path"=>"upload/", "file_name"=>"audio_" .uniqid(), "formart"=>["mp3"]],
 ];

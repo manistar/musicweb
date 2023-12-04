@@ -7,8 +7,11 @@ $d = new database;
 require_once 'content/content.php';
 $c = new content;
 require_once 'consts/user.php';
+require_once 'consts/shop.php';
 require_once 'function/autorize.php';
 $v = new validate;
+require_once "function/shop.php";
+$s = new shop; 
 
 // if(isset($_SESSION['userSession'])){
 //     $userID = htmlspecialchars($_SESSION['userSession']);

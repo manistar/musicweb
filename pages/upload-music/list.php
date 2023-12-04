@@ -22,7 +22,7 @@
                         <div class="profile">
                             <div class="profile__user">
                                 <div class="profile__avatar">
-                                    <img src="upload/<?=$data['upload_image'];?>" alt>
+                                    <img src="upload/profile/<?=$data['upload_image'];?>" alt>
                                 </div>
                                 <div class="profile__meta">
                                     <h3><?=$data['first_name'].' '.$data['last_name'];?></h3>

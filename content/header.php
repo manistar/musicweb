@@ -118,30 +118,10 @@
                         </div>
                     </div>
 
-                    <div class="header__action header__action--cart">
-                        <span>3</span>
-                        <a class="header__action-btn" href="cart.php"><i class="far fa-shopping-cart"></i></a>
-                        <div class="header__drop">
-                            <div class="header__product">
-                                <img src="musica/assets/img/store/item4.jpg" alt>
-                                <p><a href="product.php">Canon Camera</a></p>
-                                <span>Price: $520</span>
-                                <button type="button"><i class="fal fa-times"></i></button>
-                            </div>
-                            <div class="header__product">
-                                <img src="musica/assets/img/store/item3.jpg" alt>
-                                <p><a href="product.php">Real Headphone</a></p>
-                                <span>Price: $250</span>
-                                <button type="button"><i class="fal fa-times"></i></button>
-                            </div>
-                            <div class="header__product">
-                                <img src="musica/assets/img/store/item2.jpg" alt>
-                                <p><a href="product.php">Music Board</a></p>
-                                <span>Price: $3000</span>
-                                <button type="button"><i class="fal fa-times"></i></button>
-                            </div>
-                            <a href="cart.php" class="header__all">Go to cart</a>
-                        </div>
+                    <div class="header__action header__action--cart"> 
+                        <span id="cat_no"><?= $s->no_products($userID) ?></span>
+                        <a class="header__action-btn" href="?p=cart"><i class="far fa-shopping-cart"></i></a>
+                        <!-- modal hear but now inside cart, header -->
                     </div>
 
                                      

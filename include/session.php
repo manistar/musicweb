@@ -9,14 +9,12 @@
 if (!isset($exclude_session)) {
     if (!isset($_SESSION['userSession'])) {
         header('location: login.php');
-        // echo  "first";
     }
 
     if (isset($_SESSION['userSession'])) {
-        echo $userID = $_SESSION['userSession'];
+         $userID = $_SESSION['userSession'];
     } else {
         session_destroy();
-        // echo "LAST";
         header('location: login.php');
     }
 }
@@ -26,6 +24,9 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['userSession']);
     // header("location: ?p=login");
     header('location: login.php');
+}
+if (isset($_SESSION['userSession'])) {
+     $userID = $_SESSION['userSession'];
 }
 // echo $adminID;
 

@@ -89,6 +89,9 @@
                             
                                 <h3><a href="?p=single-release&ID=<?= $row['ID'] ?>"><?=$row['music_title'];?></a></h3>
                                 <span><a href="?p=single-release&ID=<?= $row['ID'] ?>"><?=$row['artist_name'];?></a></span>
+                                <div class="timestamp">
+                                    <?= date('Y-m-d H:i:s', $row['timestamp']) ?><br>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -645,7 +648,7 @@
                     <?php 
                     if(!empty($trending_music)) {
                         foreach ($trending_music as $row) {
-                            ?>
+                            ?> 
                             <li class="single-item">
                                 <a data-link data-title="<?= $row['music_title']; ?>" data-artist="<?= $row['artist_name']; ?>"
                                     data-img="upload/<?= $row['music_thumnail']; ?>" href="upload/<?= $row['music_file']; ?>"
@@ -747,30 +750,49 @@
                     class="fal fa-long-arrow-alt-right ml-2"></i></a>
         </div>
     </div>
+
+
     <div class="col-12">
         <div class="main__carousel-wrap">
             <div class="main__carousel main__carousel--store owl-carousel" id="store">
-                <?php
-                if ($products_data->rowCount() > 0) {
-                    foreach ($products_data as $row) { ?>
-                        <div class="product">
-                            <a href="#" class="product__img">
-                                <img src="musica/assets/img/store/<?= $row['img']; ?>" alt>
+            <?php
+            if ($products_data->rowCount() > 0) {
+                foreach ($products_data as $row) {
+                    ?>
+                    <div class="product">
+                        <a href="#" class="product__img">
+                            <img src="musica/assets/img/store/<?= $row['img']; ?>" alt>
+                        </a>
+                        <h3 class="product__title">
+                            <a href="product.html">
+                                <?= $row['title']; ?>
                             </a>
-                            <h3 class="product__title"><a href="product.html">
-                                    <?= $row['title']; ?>
-                                </a></h3>
-                            <span class="product__price">
-                                <?= $row['amount']; ?>
-                            </span>
-                            <a href="cart.php"><span class="product__cart"><i class="far fa-shopping-cart"></i></span></a>
-                        </div>
-                        <?php
-                    }
-                } else {
-                    echo "No data found";
+                        </h3>
+                        <span class="product__price">
+                            <?= $row['amount']; ?>
+                        </span>
+            
+                        <form action="" id="foo">
+                            <?php
+                            $add_cart['input_data']['productID'] = $row['ID'];
+                            $add_cart['input_data']['no_product'] = $s->get_no_of_product_in_cart($userID, $row['ID']);
+                            echo $c->create_form($add_cart);
+                            ?>
+                            <input type="hidden" name="add_to_cart" value="">
+                            <input type="hidden" name="page" value="shop">
+                            <div id="custommessage"></div>
+                            <button type="submit" title="Add To Cart" value="submit">
+                                <span class="product__cart"><i class="far fa-shopping-cart"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                    <?php
                 }
-                ?>
+            } else {
+                echo "No data found";
+            }
+            ?>
+
             </div>
             <button class="main__nav main__nav--prev" data-nav="#store" type="button"> <i
                     class="fal fa-long-arrow-alt-left fa-lg mr-2"></i> </button>

@@ -868,7 +868,7 @@ class database
         }
         if (isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST") {
 
-            if ($size < 5500000) {
+            if ($size < 7500000) {
                 $fileInfo = pathinfo($image);
                 $ext = $fileInfo['extension'];
 
@@ -891,7 +891,7 @@ class database
                     return false;
                 }
             } else {
-                database::message("<b>$image</b>: Image too large. Make sure your image size is not above 3MB", "error");
+                database::message("<b>$image</b>: Image too large. Make sure your image size is not above 7MB", "error");
                 return false;
             }
         }

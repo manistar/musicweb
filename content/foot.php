@@ -34,7 +34,7 @@
         <script src="musica/assets/js/slider-radio.js"></script>
         <script src="musica/assets/js/jquery.inputmask.min.js"></script>
         <script src="musica/assets/js/plyr.min.js"></script>
-        <script src="musica/assets/js/main.js"></script>
+        <script src="musica/assets/js/main.js?m=89998"></script>
         
     
         
