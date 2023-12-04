@@ -75,7 +75,9 @@
                                                             <td><span class="cart__price">
                                                             $ <?= number_format($total); ?>
                                                             </span></td>
-                                                        <td><button class="cart__delete" type="button"><i class="far fa-times"></i></button></td>
+                                                        <td>
+                                                            <button class="cart__delete" type="button">
+                                                            <a href="?p=cart&pID=<?= $carting['ID'];?>&products"><i class="far fa-times"></i></a></button></td>
                                                     </tr>
                                             <?php
                                                 }

@@ -649,37 +649,7 @@
                     if(!empty($trending_music)) {
                         foreach ($trending_music as $row) {
                             ?> 
-                            <li class="single-item">
-                                <a data-link data-title="<?= $row['music_title']; ?>" data-artist="<?= $row['artist_name']; ?>"
-                                    data-img="upload/<?= $row['music_thumnail']; ?>" href="upload/<?= $row['music_file']; ?>"
-                                    class="single-item__cover">
-                                    <img src="upload/<?= $row['music_thumnail']; ?>" alt>
-                                    <i class="far fa-play"></i>
-                                    <i class="far fa-pause"></i>
-                                </a>
-                                <div class="single-item__title">
-                                    <h4><a href="#"><?= $row['music_title']; ?></a></h4>
-                                    <span><a href="?p=artist"><?= $row['artist_name']; ?></a></span>
-                                </div>
-                                <span class="single-item__time single-item__time--live">LIVE</span>
-                                <div class="dropdown moremenu dropleft">
-                                    <button class="btn" type="button" data-toggle="dropdown">
-                                        <i class="far fa-ellipsis-v-alt"></i>
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="moremenu">
-                                        <a class="dropdown-item" href="#"><i class="far fa-layer-plus"></i> Add
-                                            To Playlist</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-heart"></i>
-                                            Favourite</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-share-alt"></i>
-                                            Share</a>
-                                        <a class="dropdown-item" href="#"><i class="far fa-info-circle"></i>
-                                            Music Info</a>
-                                        <a class="dropdown-item" href="#"><i class="fal fa-download"></i>
-                                            Download</a>
-                                    </div>
-                                </div>
-                            </li>
+                            <?= $c->trending_list($row);?>
                                     <?php
                         }
                     } else {

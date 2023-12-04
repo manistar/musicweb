@@ -198,6 +198,56 @@ class content extends database
         return null;
     }
 
+    
+    function trending_list($row, $class = "") {
+        if ($row) {
+            $html = '<li class="single-item">' .
+                '<form action="passer" id="foo' . $row['userID'] . '">' .
+                '<a data-link data-title="' . $row['music_title'] . '" data-artist="' . $row['artist_name'] . '"' .
+                'data-img="upload/' . $row['music_thumnail'] . '" href="upload/' . $row['music_file'] . '" ' .
+                'class="single-item__cover">' .
+                '<img src="upload/' . $row['music_thumnail'] . '" alt>' .
+                '<div id="custommessage"></div>' .
+                '<button id="Button" onclick="submitform(\'foo' . $row['userID'] . '\')" type="submit" value="submit">' .
+                '<i class="far fa-play"></i>' .
+                '<i class="far fa-pause"></i>' .
+                '</button>' .
+                '</form>' .
+                '</a>' .
+                '<div class="single-item__title">' .
+                '<h4><a href="#">' . $row['music_title'] . '</a></h4>' .
+                '<span><a href="?p=artist">' . $row['artist_name'] . '</a></span>' .
+                '</div>';
+    
+            $html .= '<span class="single-item__time">3:05</span>';
+    
+            if (!empty($trending_music = "")) {
+                $html .= '<span class="single-item__time single-item__time--live">' . $row['tag_name'] . '</span>';
+            }
+    
+            $html .= '<div class="dropdown moremenu dropleft">' .
+                '<button class="btn" type="button" data-toggle="dropdown">' .
+                '<i class="far fa-ellipsis-v-alt"></i>' .
+                '</button>' .
+                '<div class="dropdown-menu" aria-labelledby="moremenu">' .
+                '<a class="dropdown-item" href="#"><i class="far fa-layer-plus"></i> Add To Playlist</a>' .
+                '<a class="dropdown-item" href="#"><i class="far fa-heart"></i> Favourite</a>' .
+                '<a class="dropdown-item" href="#"><i class="far fa-share-alt"></i> Share</a>' .
+                '<a class="dropdown-item" href="#"><i class="far fa-info-circle"></i> Music Info</a>' .
+                '<a class="dropdown-item" href="#"><i class="fal fa-download"></i> Download</a>' .
+                '</div>' .
+                '</div>' .
+                '</li>';
+    
+            return $html;
+        }
+    
+        return ''; // If the condition is not met, return an empty string
+    }
+    
+    
+    
+
     function countries()
     {
         if (isset($this->data['data'])) {
