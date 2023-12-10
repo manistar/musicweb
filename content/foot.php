@@ -38,12 +38,35 @@
         
     
         
+<script>
+// Add an event listener to the button.
+var button = document.getElementById('download-button');
+button.addEventListener('click', function() {
+  // Read the file contents.
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '<?= $file_url; ?>', true);
+  xhr.responseType = 'blob';
+
+  xhr.onload = function() {
+    if (this.status === 200) {
+      // Create a download link with the file contents.
+      var downloadUrl = URL.createObjectURL(this.response);
+      var link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = '<?= $file_name; ?>';
+      link.click();
+      URL.revokeObjectURL(downloadUrl);
+    }
+  };
+
+  xhr.send();
+});
+</script>
 
 
-
-      <!-- <script>
+      <script>
         function myFunction() {
             let element = document.body;
             element.classList.toggle("dark");
         }
-      </script> -->
+      </script>

@@ -31,7 +31,12 @@ $v = new validate;
         $userID = htmlspecialchars($_SESSION['userSession']);
         $data = $d->getall("users", "ID = ?", [$userID], fetch:"details");
     }
-    
+
+    if(isset($_GET['ID'])){
+        $product_id = $_GET['ID'];
+        $artist_single = $d->getall("playlist", "userID = ? and status = ?", [$product_id, 'video'], fetch: "moredetails");
+    } 
+     
     if(isset($_GET['ID'])){
         $product_id = $_GET['ID'];
         $single_release = $d->getall("playlist", "userID = ?", [$product_id], fetch: "moredetails");
@@ -58,7 +63,7 @@ $v = new validate;
         $product_id = $_GET['pID'];
         $delete_products = $d->delete("cart", "productID = ?", [$product_id]);
     }
-
+    $artist_rows = $d->getall("users", "status = ?", ['artist'], fetch: "moredetails");
     $recent_play = $d->getall("playlist", "label = ?", ['recent'], fetch: "moredetails");
     $latest_play = $d->getall("playlist", "label = ?", ['latest'], fetch: "moredetails");
     $artist = $d->getall("playlist", "status = ?", ['1'], fetch: "moredetails");
@@ -70,5 +75,5 @@ $v = new validate;
         $product_id = $_GET['ID'];
         $single_data = $d->getall("playlist", "userID = ?", [$product_id], fetch: "details");
     }    
-    // $single_release = $d->getall("playlist", "userID = ?", [$userID], fetch: "moredetails");//To fecth each uploaded data for login users only    
+    $single_data_array = $d->getall("playlist", "userID = ?", [$userID], fetch: "details");//To fecth each uploaded data for login users only    
 ?>

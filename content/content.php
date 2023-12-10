@@ -199,7 +199,12 @@ class content extends database
     }
 
     
-    function trending_list($row, $class = "") {
+    function music_display($row, $class = "") {
+        // Assuming $trending_music is a variable or an array
+        // $d = new database; 
+        // $trending_music = $d->getTrendingMusic();
+        // $trending_music = $d->getall("playlist", "play_count > ? order by play_count DESC Limit 20", [1], fetch: "moredetails");
+    
         if ($row) {
             $html = '<li class="single-item">' .
                 '<form action="passer" id="foo' . $row['userID'] . '">' .
@@ -221,10 +226,10 @@ class content extends database
     
             $html .= '<span class="single-item__time">3:05</span>';
     
-            if (!empty($trending_music = "")) {
-                $html .= '<span class="single-item__time single-item__time--live">' . $row['tag_name'] . '</span>';
-            }
-    
+            // Replace $file_url with the actual URL for the download
+            $file_path = 'upload/' . $row["music_file"];
+            $file_name = basename($file_path);
+            $file_url  = 'upload/' . $row["music_file"];
             $html .= '<div class="dropdown moremenu dropleft">' .
                 '<button class="btn" type="button" data-toggle="dropdown">' .
                 '<i class="far fa-ellipsis-v-alt"></i>' .
@@ -234,7 +239,7 @@ class content extends database
                 '<a class="dropdown-item" href="#"><i class="far fa-heart"></i> Favourite</a>' .
                 '<a class="dropdown-item" href="#"><i class="far fa-share-alt"></i> Share</a>' .
                 '<a class="dropdown-item" href="#"><i class="far fa-info-circle"></i> Music Info</a>' .
-                '<a class="dropdown-item" href="#"><i class="fal fa-download"></i> Download</a>' .
+                '<a class="dropdown-item" href="' . $file_url . '" id="download-button"><i class="fal fa-download"></i> Download</a>' .
                 '</div>' .
                 '</div>' .
                 '</li>';
@@ -245,6 +250,7 @@ class content extends database
         return ''; // If the condition is not met, return an empty string
     }
     
+
     
     
 

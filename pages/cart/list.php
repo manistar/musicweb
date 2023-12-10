@@ -1,3 +1,4 @@
+<?php require_once "include/auth-ini.php"?>
 <section class="main">
     <div class="container-fluid">
         <div class="row row--grid">
@@ -152,16 +153,17 @@
 
                         <div class="checkout">
                             <h4 class="checkout__title">Checkout</h4>
-                            <form action="#" ">
-<div class=" form-group">
-                                <input type="text" name="name" class="form-control" placeholder="Customer Name">
-                        </div>
+                            <form action="passer" id="foo">
+                            <?= $c->create_form($checkout);?>
+                            <!-- <div class=" form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Customer Name">
+                            </div>
                         <div class="form-group">
                             <input type="text" name="email" class="form-control" placeholder="Customer Email">
                         </div>
                         <div class="form-group">
                             <input type="text" name="phone" class="form-control" placeholder="Customer Phone">
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label>Payment method</label>
                             <div class="custom-control custom-radio mb-2">
@@ -173,7 +175,8 @@
                                 <label class="custom-control-label" for="pay2">Stripe</label>
                             </div>
                         </div>
-                        <button type="button" class="payment__btn">Checkout</button>
+                        <div class="custommessage"></div>
+                        <button type="submit" class="payment__btn" value="submit">Checkout</button>
                         </form>
                     </div>
 

@@ -37,14 +37,14 @@
                             foreach ($single_release as $row) {
                             ?>
 
-                                <?= $c->trending_list($row);?>
+                                <?= $c->music_display($row);?>
 
                             <?php
                                 }
                             } else {
                                 echo "No data found";
                             }
-                        ?>
+                        ?> 
                             
                         </ul>
                     </div>

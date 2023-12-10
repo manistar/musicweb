@@ -79,7 +79,7 @@ $profile_settings = [
 ],
 "input_data"=>$data,
 ];
-
+ 
 $change_password = [
     "ID" => ["input_type"=>"hidden", "is_required"=>false],
     "password" => [

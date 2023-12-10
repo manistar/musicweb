@@ -23,16 +23,15 @@
 
                 <div class="header__logo">
                     <a href="?p=dashboard.php">
-                        
+                    
                         <?php 
                         if (is_array($data)) { 
                             echo '<img src="musica/assets/img/small-logo.png" alt>';
                             }?>
-                        
                     </a>
                 </div>
 
-
+                <!-- <button onclick="getBrowserTheme()">Get Browser Theme</button> -->
                 <form action="" class="header__search" >
                     <input type="text" oninput="search(this.value, 'showresult')"  placeholder="Search here...">
                     <button type="button"><i class="far fa-search"></i></button>
@@ -40,15 +39,16 @@
                     <div id="showresult"></div>
                 </form>
 
-
+                
                 <nav class="header__nav">
+           
                     <ul>
                         <li><a href="about.php">About</a></li>
                         <li><a href="contact.php">Contact</a></li>
                         <li class="header__nav-drop">
                             <a href="#">Pages</a>
                             <div class="header__drop">
-                                <a href="artist.php"> <i class="far fa-music"></i> Artist</a>
+                                <a href="artists.php"> <i class="far fa-music"></i> Artist</a>
                                 <a href="event.php"> <i class="far fa-music"></i> Event</a>
                                 <a href="release.php"> <i class="far fa-music"></i> Release</a>
                                 <a href="product.php"> <i class="far fa-music"></i> Product</a>
@@ -217,7 +217,7 @@
                             Favourites</span></a>
                 </li>
                 <li class="?p=sidebar__nav-item">
-                    <a href="orders" class="sidebar__nav-link"> <i class="far fa-shopping-cart"></i> <span>My
+                    <a href="?p=orders" class="sidebar__nav-link"> <i class="far fa-shopping-cart"></i> <span>My
                             Orders</span></a>
                 </li>
                 <li>
@@ -228,28 +228,28 @@
                             Music</span></a>
                 </li>
                 <li class="sidebar__nav-item">
-                    <a href="?p=artist" class="sidebar__nav-link"> <i class="far fa-user-friends"></i>
+                    <a href="?p=artists" class="sidebar__nav-link"> <i class="far fa-user-friends"></i>
                         <span>Artists</span></a>
                 </li>
-                <li class="sidebar__nav-item">
+                <!-- <li class="sidebar__nav-item">
                     <a href="?p=release" class="sidebar__nav-link"> <i class="far fa-music"></i>
                         <span>Release</span></a>
-                </li>
-                <li class="sidebar__nav-item">
+                </li> -->
+                <!-- <li class="sidebar__nav-item">
                     <a href="?p=albums" class="sidebar__nav-link"> <i class="far fa-microphone"></i>
                         <span>Albums</span></a>
-                </li>
+                </li> -->
                 <li class="sidebar__nav-item">
-                    <a href="?p=genres" class="sidebar__nav-link"> <i class="far fa-gem"></i> <span>Genres</span></a>
+                    <a href="?p=trending-now" class="sidebar__nav-link"> <i class="far fa-gem"></i> <span>Genres</span></a>
                 </li>
-                <li class="sidebar__nav-item">
+                <!-- <li class="sidebar__nav-item">
                     <a href="?p=event" class="sidebar__nav-link"> <i class="far fa-calendar-alt"></i>
                         <span>Events</span></a>
-                </li>
+                </li> -->
                 <li>
                     <span class="sidebar-title">Others</span>
                 </li>
-
+<!-- 
                 <li class="sidebar__nav-item">
                     <a class="sidebar__nav-link" data-toggle="collapse" href="#collapseMenu1" role="button"
                         aria-expanded="false" aria-controls="collapseMenu1"> <i class="far fa-folder-open"></i>
@@ -266,7 +266,7 @@
                             <li><a href="?p=playlist-single.php"> <i class="far fa-music"></i> Playlist Single</a></li>
                             <li><a href="?p=upload-music"> <i class="far fa-music"></i> Upload Music</a></li>
                             <li><a href="?p=free-music.php"> <i class="far fa-music"></i> Free Music</a></li>
-                            <li><a href="?p=artist.php"> <i class="far fa-music"></i> Artist</a></li>
+                            <li><a href="?p=artists"> <i class="far fa-music"></i> Artist</a></li>
                             <li><a href="?p=artist-single.php"> <i class="far fa-music"></i> Artist Single</a></li>
                             <li><a href="?p=event.php"> <i class="far fa-music"></i> Event</a></li>
                             <li><a href="?p=event-single.php"> <i class="far fa-music"></i> Event Single</a></li>
@@ -292,19 +292,19 @@
                             <li><a href="?p=404.php"> <i class="far fa-music"></i> 404 Page</a></li>
                         </ul>
                     </div>
-                </li>
+                </li> --> 
 
                 <li class="sidebar__nav-item">
                     <a href="store.php" class="sidebar__nav-link"> <i class="far fa-shopping-cart"></i>
                         <span>Store</span></a>
                 </li>
-                <li class="sidebar__nav-item">
+                <!-- <li class="sidebar__nav-item">
                     <a href="news.php" class="sidebar__nav-link"> <i class="far fa-rss"></i> <span>News</span></a>
-                </li>
-                <li class="sidebar__nav-item">
+                </li> -->
+                <!-- <li class="sidebar__nav-item">
                     <a href="news-single.php" class="sidebar__nav-link"> <i class="far fa-rss-square"></i> <span>News
                             Single</span></a>
-                </li>
+                </li> -->
                 <li>
                     <span class="sidebar-title">Playlist</span>
                 </li>
@@ -312,12 +312,12 @@
                     <a href="playlist.php" class="sidebar__nav-link"> <i class="far fa-list-ul"></i>
                         <span>Playlist</span></a>
                 </li>
-                <li class="sidebar__nav-item">
+                <!-- <li class="sidebar__nav-item">
                     <a href="create-playlist.php" class="sidebar__nav-link"> <i class="far fa-layer-plus"></i>
                         <span>Create Playlist</span></a>
-                </li>
+                </li> -->
                 <li class="sidebar__nav-item">
-                    <a href="#" class="sidebar__nav-link"> <i class="far fa-lock"></i> <span>Logout</span></a>
+                    <a href="index?logout" class="sidebar__nav-link"> <i class="far fa-lock"></i> <span>Logout</span></a>
                 </li>
             </ul>
         </div>

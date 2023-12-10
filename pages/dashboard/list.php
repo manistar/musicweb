@@ -123,7 +123,7 @@
                                 <img src="upload/<?=$row['music_thumnail'];?>" alt>
                                 <a href="release-single.html"><i class="far fa-play"></i></a>
                                 <span class="album__stat">
-                                    <span><i class="far fa-heart"></i><?=$row['heart'];?></span>
+                                    <button id="favoriteButton" onclick="toggleFavorite()"><i class="far fa-heart"></i><?=$row['heart'];?></button>
                                     <span><i class="far fa-music"></i><?=$row['listen'];?></span>
                                 </span>
                             </div>
@@ -649,7 +649,7 @@
                     if(!empty($trending_music)) {
                         foreach ($trending_music as $row) {
                             ?> 
-                            <?= $c->trending_list($row);?>
+                            <?= $c->music_display($row);?>
                                     <?php
                         }
                     } else {
@@ -842,3 +842,23 @@
 </section>
 
 <!-- END: Main Menu-->
+<script>
+    let isFavorite = false;
+
+function toggleFavorite() {
+  const favoriteButton = document.getElementById('favoriteButton');
+
+  if (isFavorite) {
+    // Remove the favorite class and change the button text
+    favoriteButton.classList.remove('favorite');
+    favoriteButton.textContent = 'Add to Favorites';
+  } else {
+    // Add the favorite class and change the button text
+    favoriteButton.classList.add('favorite');
+    favoriteButton.textContent = 'Remove from Favorites';
+  }
+
+  // Toggle the favorite state
+  isFavorite = !isFavorite;
+}
+</script>

@@ -22,7 +22,6 @@ if (!isset($exclude_session)) {
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['userSession']);
-    // header("location: ?p=login");
     header('location: login.php');
 }
 if (isset($_SESSION['userSession'])) {
