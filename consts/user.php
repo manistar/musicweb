@@ -1,6 +1,11 @@
 <?php
-$userID = htmlspecialchars($_SESSION['userSession']);
-$data = $d->getall("users", "ID = ?", [$userID], fetch:"details");
+    // $userID = $data= "";
+    $userID = $data = [];
+    if (isset($_SESSION['userSession'])) {
+        $userID = htmlspecialchars($_SESSION['userSession']);
+        $data = $d->getall("users", "ID = ?", [$userID], fetch:"details");
+    } 
+
 $user_form = [
     "ID" => ["input_type"=>"hidden", "is_required"=>false],
     "first_name" => [],

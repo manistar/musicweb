@@ -58,16 +58,22 @@
                                                         <td>
 
                                                         <form action="passer" id="foo">
-                                                        <div class="custommessage"></div>
+                                                            
+                                               
                                                             <div class="cart__amount">
-                                                                <button type="submit" class="sub">
+                                                            <input type="hidden" name="add_to_cart" value="">
+                                                            <input type="hidden" name="page" value="shop">
+                                                            <div id="custommessage"></div>
+                                                                <!-- Minus -->
+                                                            <button type="submit" class="sub">
                                                                     <i class="far fa-minus"></i>
                                                                 </button>
-                                                                <input type="text" value="<?= $row['no_product'] ?>">
-                                                                <button type="submit" class="add">
+                                                                <!-- Plus -->
+                                                                <input type="text" onchange="updateTotal()" value="<?= $row['no_product'] ?>">
+                                                                <button type="submit" class="add" value="submit">
                                                                     <i class="far fa-plus"></i>
                                                                 </button>
-                                                        </form>
+                                                        </form> 
                                                             </div>
                                                         </td>
                                                         <td><span class="cart__price">$
@@ -155,15 +161,6 @@
                             <h4 class="checkout__title">Checkout</h4>
                             <form action="passer" id="foo">
                             <?= $c->create_form($checkout);?>
-                            <!-- <div class=" form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Customer Name">
-                            </div>
-                        <div class="form-group">
-                            <input type="text" name="email" class="form-control" placeholder="Customer Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="phone" class="form-control" placeholder="Customer Phone">
-                        </div> -->
                         <div class="form-group">
                             <label>Payment method</label>
                             <div class="custom-control custom-radio mb-2">

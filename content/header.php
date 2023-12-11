@@ -195,7 +195,7 @@
         <div class="sidebar">
 
             <div class="sidebar__logo">
-                <a href="?p=dashboard.php.php"><img src="musica/assets/img/logo.png" alt></a>
+                <a href="?p=dashboard"><img src="musica/assets/img/logo.png" alt></a>
             </div>
 
 
@@ -295,7 +295,7 @@
                 </li> --> 
 
                 <li class="sidebar__nav-item">
-                    <a href="store.php" class="sidebar__nav-link"> <i class="far fa-shopping-cart"></i>
+                    <a href="?p=store" class="sidebar__nav-link"> <i class="far fa-shopping-cart"></i>
                         <span>Store</span></a>
                 </li>
                 <!-- <li class="sidebar__nav-item">

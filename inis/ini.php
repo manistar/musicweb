@@ -13,6 +13,7 @@ $s = new shop;
 $c = new content;
 $d = new database; 
 $v = new validate;
+$userID = "";
 
 
     $data = "";
@@ -53,16 +54,20 @@ $v = new validate;
     // usort($recent_play, function ($a, $b) {
     //     return $b['timestamp'] - $a['timestamp'];
     // });
+
+    // Delete Function
+    if(isset($_GET['pID'])){
+        $product_id = $_GET['pID'];
+        $delete_products = $d->delete("cart", "productID = ?", [$product_id]);
+    }
+// Echo
+    $user_ID = $userID;
+    $product_cart = $d->getall("cart", "userID = ?", [$user_ID], fetch: "moredetails");
     if(isset($_GET['pID'])){
         $product_id = $_GET['pID'];
         $delete_products = $d->delete("cart", "productID = ?", [$product_id]);
     }
 
-    $product_cart = $d->getall("cart", "userID = ?", [$userID], fetch: "moredetails");
-    if(isset($_GET['pID'])){
-        $product_id = $_GET['pID'];
-        $delete_products = $d->delete("cart", "productID = ?", [$product_id]);
-    }
     $artist_rows = $d->getall("users", "status = ?", ['artist'], fetch: "moredetails");
     $recent_play = $d->getall("playlist", "label = ?", ['recent'], fetch: "moredetails");
     $latest_play = $d->getall("playlist", "label = ?", ['latest'], fetch: "moredetails");

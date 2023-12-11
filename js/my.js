@@ -64,70 +64,62 @@ function getCookieValue(cookieName) {
   const myCookieValue = getCookieValue('browser_theme');
   console.log(myCookieValue);
   
+// Foo Js
+const form = document.getElementById('foo');
 
-const elements = document.querySelectorAll('#foo');
-$i = 0;
-elements.forEach(element => {
-  element.addEventListener("submit", event => {
-    // Prevent default posting of form - put here to work in case of errors
-    event.preventDefault();
- 
-    // Abort any pending request
-    if (request) {
-        request.abort();
-    }
-    // setup some local variables
-    var $form = $(event.target);
-    var fd = new FormData(element);
-    var action = 'passer';
-    if(window.location.href != $form[0].action) {
-        action = $form[0].action;
-    }
-    // Let's select and cache all the fields
-    var $inputs = $form.find("input, select, button, textarea");
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-    // Serialize the data in the form
-    var serializedData = $form.serialize();
+  // ... (rest of your code)
 
-    // Let's disable the inputs for the duration of the Ajax request.
-    // Note: we disable elements AFTER the form data has been serialized.
-    // Disabled form elements will not be serialized.
-    $inputs.prop("disabled", true);
-    const params = new URLSearchParams(serializedData);
-  
-    // Fire off the request to /form.php
-  
+  // Setup some local variables
+  const $form = $(form);
+  const fd = new FormData(form);
+  let action = 'passer';
 
-    if (params.has("confirm")) {
-        swal({
-            title: "Attention!",
-            text: params.get("confirm"),
-            icon: "warning",
-            
-            buttons: true,
-            dangerMode: true,
-          }).then((willDelete) => {
-            if (willDelete) {
-              runjax(request, event,  $inputs, fd, action);
-            } else {
-            //   close form
-            }
-          });
-    } else {
+  if (window.location.href !== $form[0].action) {
+    action = $form[0].action;
+  }
+
+  // Let's select and cache all the fields
+  const $inputs = $form.find('input, select, button, textarea');
+
+  // Serialize the data in the form
+  const serializedData = $form.serialize();
+
+  // Let's disable the inputs for the duration of the Ajax request.
+  // Note: we disable elements AFTER the form data has been serialized.
+  // Disabled form elements will not be serialized.
+  $inputs.prop('disabled', true);
+  const params = new URLSearchParams(serializedData);
+
+  // Fire off the request to /form.php
+  if (params.has('confirm')) {
+    swal({
+      title: 'Attention!',
+      text: params.get('confirm'),
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        // Assuming runjax is defined and handles the AJAX request
         runjax(request, event, $inputs, fd, action);
-    }
-    
-    // Callback handler that will be called on success
-   
-    request.always(function () {
-        // Reenable the inputs
-        $inputs.prop("disabled", false);
+      } else {
+        // close form
+      }
     });
+  } else {
+    // Assuming runjax is defined and handles the AJAX request
+    runjax(request, event, $inputs, fd, action);
+  }
 
+  // ... (rest of your code)
 });
-$i++;
-});
-// Bind to the submit event of our form
+
+  
+  
+
 
 function runjax(request, event, $inputs, fd, action = "passer") {
     request = $.ajax({
@@ -748,7 +740,6 @@ function search(key, contentshow) {
         }
     });
 }
-
 
 
 

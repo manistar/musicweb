@@ -22,4 +22,5 @@ class shop extends database {
         if(!is_array($data)) { return 1; }
         return $data['no_product'];
     }
+    
 }
