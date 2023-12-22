@@ -61,7 +61,7 @@
                                                     //  $total_cat = $total_cat + $total;
                                                      $add_cart["input_data"]['productID'] = $row['productID'];
                                                      $add_cart["input_data"]['no_product'] = $row['no_product'];
-                                                     var_dump($row['no_product']);   
+                                                    //  var_dump($row['no_product']);   
                                                     ?>
                                             <tr>
                                                 <td>
