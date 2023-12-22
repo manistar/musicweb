@@ -21,6 +21,21 @@ if (isset($_POST['upload_music'])) {
     return null;
 }
 
+if(isset($_POST['newpayment'])){
+    require_once "include/auth-ini.php";
+    echo $pay->newpayment();
+    return null;
+}
+
+if(isset($_POST['cardpayment']) && htmlspecialchars($_POST['cardpayment']) != ""){
+    if(is_array($usersub)){
+        $d->message("You have an active plan.", "error");
+    }else{
+        $cardid = htmlspecialchars($_POST['cardpayment']);
+        $debitcard = $pay->debitcard($cardid);
+    }
+}
+
 if (isset($_POST['update_profile_settings'])) {
     require_once "pages/profile-settings/ini.php";
     echo $s->profile_setings_update($profile_settings);

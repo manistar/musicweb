@@ -130,6 +130,34 @@ class database
         return $this->getall("playlist", $sql, $params, "*", "moredetails");
     }
 
+    function gettrialamount(){
+        $data = $this->getall("settings", "meta_name = ?", ["free_trial"], fetch: "details");
+        return $data['meta_value'];
+    }
+
+    function getlong($type){
+        if($type == "monthly"){
+          return  $long = "month(s)";
+        }else if($type == "annual"){
+           return $long = "year(s)";
+        }
+    }
+
+    function calculateplan($id, $amount, $duration){
+        return $amount * $duration;
+    }
+
+    function getpaymetmethod($method){
+        $value = "flutterwave";
+        if(ctype_digit($method)){
+            $value =  "card";
+        }else{
+            $value = $method;
+        }
+        return $value;
+    }
+
+
     // USEAGE
     // Insert single data
     // $d->quick_insert("members",
@@ -163,6 +191,8 @@ class database
     // ],
     // ]
     // );
+
+    
 
     function quick_insert($into, array $data, $message = null)
     {
@@ -334,7 +364,7 @@ class database
         return $data ?? [];
     }
 
-    function validate_form($datas, $what = "", $action = null)
+    function validate_form($datas, $what = "", $action = null, $error_message = true)
     {
         $err = false;
         $info = [];
@@ -397,7 +427,7 @@ class database
         }
 
         if ($what != "") {
-            if (!$this->validate_database_data($what, $wait, $datas, $info)) {
+            if (!$this->validate_database_data($what, $wait, $datas, $info, $error_message)) {
                 $err = true;
             }
         }
@@ -482,6 +512,23 @@ class database
               
         }
     }
+
+    function getaddress($data){
+        $address = "";
+        $d = new database;
+        if(is_array($data)){
+            foreach ($data as $key => $value) {
+               $c = $this->getall($key, "ID = ?", [$value], fetch: "details");
+                if(is_array($c)){
+                    $address .= $c['name']." ";
+                }
+            }
+        }else{
+            $address = "No address";
+        }
+        return $address;
+    }
+
     function check_if_required($data)
     {
         if (isset($data['is_required']) && $data['is_required'] == true || !isset($data['is_required'])) {
@@ -489,7 +536,7 @@ class database
         }
         return false;
     }
-    function validate_database_data($what, $wait, $datas, $info): bool
+    function validate_database_data($what, $wait, $datas, $info, $error_message = true): bool
     {
         $error = false;
         $idc = "";
@@ -546,7 +593,9 @@ class database
             }
             if ($check > 0) {
                 $error = true;
-                echo $this->message("This exact ".$this->clean_str($what)." already exist", "error");
+                if($error_message == true){
+                    echo $this->message("This exact ".$this->clean_str($what)." already exist", "error");
+                }
                 $check = null;
             }
         }

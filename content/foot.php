@@ -63,7 +63,68 @@ button.addEventListener('click', function() {
 });
 </script>
 
+<script src="https://checkout.flutterwave.com/v3.js></script>
+<!--  -->
 
+<!--  -->
+<script>
+function makePayment() {
+            <?php
+            $ipaddress = $_SERVER['REMOTE_ADDR'];
+            $tx_ref = "PAY-" . uniqid();
+            ?>
+            FlutterwaveCheckout({
+                public_key: "<?= flutterwave_public_key['meta_value']; ?>",
+                tx_ref: "<?php echo $tx_ref ?>",
+                amount: <?php echo $total ?>,
+                currency: "<?= currency['code'] ?>",
+                country: "<?= $d->getall("countries", "name = ?", currency['country'], fetch: "details")['sort_name']; ?>",
+                payment_options: "card",
+                redirect_url: // specified redirect URL
+                    "<?= $d->geturl(); ?>",
+                meta: {
+                    consumer_id: "<?php echo $data['ID'] ?>",
+                    consumer_mac: "<?php echo $ipaddress ?>",
+                },
+                customer: {
+                    email: "<?php echo $data['email'] ?>",
+                    phone_number: "<?php echo $data['phone_number'] ?>",
+                    name: "<?php echo $data['first_name'] . ' ' . $data['last_name']; ?>",
+                },
+                callback: function(data) {
+                    console.log(data);
+                },
+                onclose: function() {
+                    // close modal
+                },
+                customizations: {
+                    title: "<?= $des ?>",
+                    description: "<?= $des; ?>",
+                    logo: "img/logo.png",
+                },
+            });
+
+            // pass payment info to data pass 
+
+            $.ajax({
+                type: 'POST',
+                url: 'passer',
+                data: {
+                    newpayment: "payment",
+                    payfor: "<?php echo $payfor; ?>",
+                    payforID: "<?php echo $payforid; ?>",
+                    ref: "<?php echo $tx_ref; ?>",
+                    price: "<?= $total ?>",
+                    title: "<?= $des ?>",
+                    description: "<?= $des ?>",
+                },
+                success: function(response) {
+                    // document.getElementById("tabledata").innerHTML = response;
+
+                }
+            });
+        }
+    </script>
 
 
 

@@ -1,11 +1,4 @@
 <?php
-    // $userID = $data= "";
-    $userID = $data = [];
-    if (isset($_SESSION['userSession'])) {
-        $userID = htmlspecialchars($_SESSION['userSession']);
-        $data = $d->getall("users", "ID = ?", [$userID], fetch:"details");
-    } 
-
 $user_form = [
     "ID" => ["input_type"=>"hidden", "is_required"=>false],
     "first_name" => [],
@@ -32,9 +25,6 @@ $user_validating = [
         
     ],
 
-    //  '<div class="form-group text-right">'
-    //  '<a href="forgot.html">Forgot Password ?</a>
-  
     "password" => [
         "title" => "Password",
         "global_class" => "col-md-12",
@@ -130,46 +120,6 @@ $user_registration = [
     // ],
     // "input_data"=>["userID"=>uniqid()],
 ];
-
-$checkout = [
-    // $data["first_name"].' '.$data["last_name"],
-    "first_name" => [
-        "title" => "First Name",
-        "global_class" => "col-md-12",        
-        "placeholder" => "first name",
-        "is_required" => true,
-        "input_type" => "text",
-        "type" => "input",
-    ],
-   
-
-    "email" => [
-        "title" => "Email",
-        "global_class" => "col-md-12",
-        "name"=> "email",
-        "placeholder" => "Example@email.com",
-        "is_required" => true,
-        "input_type" => "email",
-        "type" => "input",
-    ],
-    "phone_number" => [
-        "title" => "Phone Number",
-        "global_class" => "col-md-12",
-        "name"=> "phone_number",
-        "placeholder" => "Enter phone number",
-        "is_required" => true,
-        "input_type"=>"number",
-        "type" => "input",
-    ],
-    "payment" => [
-        "global_class" => "col-md-12",
-        "options" => "paypal",
-        "input_type" => "radio"
-    ],
-   
-    "input_data"=>$data,
-];
-
 
 
 // $d->create_table("users", $user_registration);

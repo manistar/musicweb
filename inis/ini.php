@@ -1,20 +1,21 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 define("Regex", []);
 require_once "include/session.php";
 require_once "include/database.php";
 require_once "content/content.php";
 require_once 'consts/shop.php';
+require_once 'consts/checkout.php';
 require_once "function/shop.php";
 require_once "function/autorize.php";
 $s = new shop;
 $c = new content;
 $d = new database; 
 $v = new validate;
-$userID = "";
-
+// $userID = "";
+$date = date('Y-m-d');
 
     $data = "";
     $script = [];
@@ -29,8 +30,10 @@ $userID = "";
 
 
     if(isset($_SESSION['userSession'])){
-        $userID = htmlspecialchars($_SESSION['userSession']);
+        $userID = htmlspecialchars($_SESSION['userSession'] ?? "");
         $data = $d->getall("users", "ID = ?", [$userID], fetch:"details");
+    }else{
+        $userID = "";
     }
 
     if(isset($_GET['ID'])){
@@ -61,8 +64,8 @@ $userID = "";
         $delete_products = $d->delete("cart", "productID = ?", [$product_id]);
     }
 // Echo
-    $user_ID = $userID;
-    $product_cart = $d->getall("cart", "userID = ?", [$user_ID], fetch: "moredetails");
+    // $user_ID = $userID;
+    $product_cart = $d->getall("cart", "userID = ?", [$userID], fetch: "moredetails");
     if(isset($_GET['pID'])){
         $product_id = $_GET['pID'];
         $delete_products = $d->delete("cart", "productID = ?", [$product_id]);

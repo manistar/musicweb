@@ -744,6 +744,7 @@
             
                         <form action="" id="foo">
                             <?php
+                            // var_dump($userID);
                             $add_cart['input_data']['productID'] = $row['ID'];
                             $add_cart['input_data']['no_product'] = $s->get_no_of_product_in_cart($userID, $row['ID']);
                             echo $c->create_form($add_cart);
@@ -842,23 +843,3 @@
 </section>
 
 <!-- END: Main Menu-->
-<script>
-    let isFavorite = false;
-
-function toggleFavorite() {
-  const favoriteButton = document.getElementById('favoriteButton');
-
-  if (isFavorite) {
-    // Remove the favorite class and change the button text
-    favoriteButton.classList.remove('favorite');
-    favoriteButton.textContent = 'Add to Favorites';
-  } else {
-    // Add the favorite class and change the button text
-    favoriteButton.classList.add('favorite');
-    favoriteButton.textContent = 'Remove from Favorites';
-  }
-
-  // Toggle the favorite state
-  isFavorite = !isFavorite;
-}
-</script>

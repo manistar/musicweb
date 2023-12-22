@@ -1,7 +1,7 @@
 <?php 
 class shop extends database {
     function add_to_cart($add_cart) {
-        $data = $this->validate_form($add_cart, "cart", "insert");
+        $data = $this->validate_form($add_cart, "cart", "insert", false);
         if($data == NULL) {
             $data =  $this->validate_form($add_cart);
             if(!is_array($data)) { return null; }
@@ -12,6 +12,8 @@ class shop extends database {
         $json = ["function"=>["changetext", "data"=>["cat_no", $this->no_products($data['userID'])]]];
         return json_encode($json);
     }
+
+    
 
     function no_products($userID) {
         return $this->getall("cart", "userID = ? and no_product > ?", [$userID, 0], fetch: "");

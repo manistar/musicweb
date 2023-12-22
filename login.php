@@ -51,7 +51,7 @@
                                     <h3>Login</h3>
                                     <p>Welcome back!</p>
                                     <form action="passer" id="foo" onsubmit="return false">
-                                        <?php echo $c->create_form($user_validating); ?>
+                                        <?= $c->create_form($user_validating); ?>
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="remember">
                                             <label class="custom-control-label" for="remember">Remember Me</label>
@@ -60,7 +60,7 @@
                                         <div id="custommessage"></div>
                                         <button type="submit" class="btn btn-block login__btn" value="submit"><i
                                                 class="fal fa-sign-in mr-2"></i> Login</button>
-                                    </form>
+                                    </form> 
                                     <p class="login__divider">or</p>
                                     <div class="login__social d-flex justify-content-between">
                                         <a href="#"><i class="fab fa-facebook-f"></i></a>
