@@ -1,4 +1,7 @@
-<?php require_once "include/auth-ini.php"?>
+<?php 
+require_once "include/auth-ini.php";
+// require "include/ini-payment.php";
+?>
 <section class="main">
     <div class="container-fluid">
         <div class="row row--grid">
@@ -114,50 +117,6 @@
                                                 echo "No data found";
                                             } ?>
                                             <!--  -->
-                                            <!-- <tr>
-                                                <td>
-                                                    <div class="cart__img">
-                                                        <img src="assets/img/store/item3.jpg" alt>
-                                                    </div>
-                                                </td>
-                                                <td><a href="product.html">Real Headphones</a></td>
-                                                <td>
-                                                    <div class="cart__amount">
-                                                        <button type="button" class="sub">
-                                                            <i class="far fa-minus"></i>
-                                                        </button>
-                                                        <input type="text" value="1">
-                                                        <button type="button" class="add">
-                                                            <i class="far fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                <td><span class="cart__price">$300</span></td>
-                                                <td><button class="cart__delete" type="button"><i
-                                                            class="far fa-times"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="cart__img">
-                                                        <img src="assets/img/store/item4.jpg" alt>
-                                                    </div>
-                                                </td>
-                                                <td><a href="product.html">Canon Camera</a></td>
-                                                <td>
-                                                    <div class="cart__amount">
-                                                        <button type="button" class="sub">
-                                                            <i class="far fa-minus"></i>
-                                                        </button>
-                                                        <input type="text" value="1">
-                                                        <button type="button" class="add">
-                                                            <i class="far fa-plus"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                <td><span class="cart__price">$700</span></td>
-                                                <td><button class="cart__delete" type="button"><i
-                                                            class="far fa-times"></i></button></td>
-                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -181,24 +140,32 @@
 
                         <div class="checkout">
                             <h4 class="checkout__title">Checkout</h4>
-                            <form action="passer" id="foo">
+                            <!-- <form action="https://checkout.flutterwave.com/v3/hosted/pay" id="foo"> -->
                                 <!-- <input type="hidden" name="public_key" value="FLWPUBK_TEST-9b9efaabfbb3b031e6a9fba2f9dafb60-X" /> -->
                             <?= $c->create_form($checkout);?>
-                        <div class="form-group">
-                            <label>Payment method</label>
-                            <div class="custom-control custom-radio mb-2">
-                                <!-- <input type="radio" id="pay1" checked name="payment" class="custom-control-input">
-                                <label class="custom-control-label" for="pay1">Paypal</label>
-                            </div>
-                            <div class="custom-control custom-radio mb-2">
-                                <input type="radio" id="pay2" name="payment" class="custom-control-input">
-                                <label class="custom-control-label" for="pay2">Stripe</label>
-                            </div> -->
-                            
-                        </div>
-                        <div class="custommessage"></div>
-                        <button type="submit" class="payment__btn" name="newpayment" value="submit" id="start-payment-button" onclick="makePayment()">Checkout</button>
-                        </form>
+                           <!-- <input type="text"> $ -->
+                        <!-- <div class="custommessage"></div> -->
+
+                           
+                        
+                           <?php // if ($payment_method == "" || $payment_method == "flutterwave" && !isset($_GET['transaction_id'])) { ?>
+                            <script src="https://checkout.flutterwave.com/v3.js"></script>
+                            <button type="submit" class="payment__btn" id="payBtn" value="submit">Checkout</button>
+                           
+                           <!--  -->
+                            <?php // } else if ($payment_method == "card") { ?>
+                                <!-- <div id="custommessage"></div> -->
+                                <!-- <input type="hidden" name="newpayment"> -->
+                                <!-- <input type="hidden" name="cardpayment" value="<?= htmlspecialchars($_GET['paymentmethod']); ?>">
+                                <input type="hidden" name="payfor" value="<?= $payfor ?>">
+                                <input type="hidden" name="payforID" value="<?= htmlspecialchars($_GET['id']) ?>">
+                                <input type="hidden" name="price" value="<?= $total ?>">
+                                <input type="hidden" name="title" value="<?= $des ?>">
+                                <input type="hidden" name="description" value="<?= $des ?>">
+
+                                <button onclick='billcard()' class="btn btn-success">Processed</button> -->
+                            <?php //} ?> 
+                        <!-- </form> -->
                     </div>
 
                 </div>
@@ -207,4 +174,6 @@
 
     </div>
     </div>
+    
 </section>
+<?php // require_once "foot.php"?>

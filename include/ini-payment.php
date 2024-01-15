@@ -1,6 +1,6 @@
 <?php
-if (isset($_GET['a'])) {
-    $variable = htmlspecialchars($_GET['a']);
+if (isset($_GET['p'])) {
+    $variable = htmlspecialchars($_GET['p']);
     switch ($variable) {
         case 'add_card':
             if (isset($_GET['transaction_id'])) {

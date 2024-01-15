@@ -605,6 +605,11 @@ class database
         return true;
     }
 
+    function settings($value){
+        // $d = new database;
+        return $this->getall("settings", "meta_name = ?", [$value], fetch: "details");
+      }
+
     function clean_str($string)
     {
         // echo $this->message("Int: We have issues to validate your data. please reload the page and try again", "error");

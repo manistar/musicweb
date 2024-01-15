@@ -57,13 +57,13 @@
                 redirect_url: // specified redirect URL
                     "<?= $d->geturl(); ?>",
                 meta: {
-                    consumer_id: "<?php echo $user['ID'] ?>",
+                    consumer_id: "<?php echo $data['ID'] ?>",
                     consumer_mac: "<?php echo $ipaddress ?>",
                 },
                 customer: {
-                    email: "<?php echo $user['email'] ?>",
-                    phone_number: "<?php echo $user['phone_number'] ?>",
-                    name: "<?php echo $user['first_name'] . ' ' . $user['last_name']; ?>",
+                    email: "<?php echo $data['email'] ?>",
+                    phone_number: "<?php echo $data['phone_number'] ?>",
+                    name: "<?php echo $data['first_name'] . ' ' . $data['last_name']; ?>",
                 },
                 callback: function(data) {
                     console.log(data);

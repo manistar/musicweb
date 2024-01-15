@@ -23,7 +23,8 @@ if (isset($_POST['upload_music'])) {
 
 if(isset($_POST['newpayment'])){
     require_once "include/auth-ini.php";
-    echo $pay->newpayment();
+    require_once "include/ini-payment.php";
+    echo $p->checkout($userID);
     return null;
 }
 

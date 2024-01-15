@@ -36,6 +36,16 @@ $d = new database;
             "input_type"=>"number",
             "type" => "input",
         ],
+
+        // "amount" => [
+        //     "title" => "Total Amount",
+        //     "global_class" => "col-md-12",        
+        //     // "placeholder" => "number_format($total_cat);",
+        //     "is_required" => true,
+        //     "input_type" => "text",
+        //     "type" => "input",
+        // ],
+       
         "payment"=>["options"=>["flutterwave"=>"Pay with Card", "Stripe"=>"Pay with Stripe"], "type"=>"select"],
         // "payment"=>[
         // "placeholder"=>"Select your payment Method", 
