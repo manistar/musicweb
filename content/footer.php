@@ -79,7 +79,8 @@
       
 
 <?php echo require_once "content/foot.php"; ?>
-<script src="js/payment.js"></script>
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<script src="js/payment.js?n=11010"></script>
 </body>
 
 <!-- Mirrored from themes.themewild.com/musica/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Nov 2023 21:12:41 GMT -->

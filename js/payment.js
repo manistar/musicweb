@@ -5,7 +5,7 @@ var payment_info = {
     amount: 0,
     currency: "NGN",
     payment_options: "card, account, banktransfer, ussd",
-    redirect_url: "payment.php",
+    redirect_url: "index?p=payment",
     meta: {
         consumer_id: "",
     },
@@ -34,17 +34,20 @@ payBtn.addEventListener("click", function(e){
     request.done(function (response) {
         if(response) {
            var data = JSON.parse(response);
+           console.log(data);
            if(data.status == "error") {
 
            }else{
-            payment_info["tx_ref"]=data.reference;
-            payment_info["amount"]=data.price;
-            payment_info["meta"]["consumer_id"]=data.userID;
-            payment_info["customer"]["email"]=data.email;
-            payment_info["customer"]["phone_number"]=data.phone_number;
-            payment_info["customer"]["name"]=data.name;
-            payment_info["customizations"]["title"]=data.title;
-            payment_info["customizations"]["description"]=data.description;
+            data = data['data'];
+            payment_info["tx_ref"]=data['ref'];
+            payment_info["amount"]=data['price'];
+            payment_info["meta"]["consumer_id"]=data['userID'];
+            payment_info["customer"]["email"]=data['email'];
+            payment_info["customer"]["phone_number"]=data['phone_number'];
+            payment_info["customer"]["name"]=data['fullname'];
+            payment_info["customizations"]["title"]=data['title'];
+            payment_info["customizations"]["description"]=data['description'];
+            console.log(payment_info);
             FlutterwaveCheckout(payment_info);
            }
         }

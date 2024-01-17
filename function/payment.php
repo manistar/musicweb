@@ -41,7 +41,7 @@
                 return json_encode($json);
             }
             // clear cart
-            $this->clear_cart($userID);
+            // $this->clear_cart($userID);
             // place user info into payment
             $payment['fullname'] = $user['first_name'].' '.$user['last_name'];
             $payment['email'] = $user['email'];
@@ -56,6 +56,53 @@
 
         }
 
+        function update_new_payment($transID, $ref, $userID) : bool {
+        $status = "failed";
+        $payment = $this->getall("payment", "userID = ? and ref = ?", [$userID, $ref]);
+        if(!is_array($payment)) { return false; }
+        $amount = $payment['price'];
+        if($this->validate_payment($transID, $amount)) {
+            $status = "success";
+        }
+        $update = $this->update("payment",  ["transaction_id"=>$transID, "status"=>$status], "ref = '$ref'");
+        if($status == "success") { return true; }
+        return false;
+        }
+
+        
+    function validate_payment($transID,  $amount) : bool
+    {
+        $amount = (float)$amount;
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://api.flutterwave.com/v3/transactions/$transID/verify",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+                "Authorization: Bearer FLWSECK_TEST-47acd6b17c2263c000211a6e6027292b-X",
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $data = json_decode($response);
+        if ($data->status == "success") {
+            $data = $data->data;
+            if ($data->charged_amount >= $amount && $data->currency == "NGN") {
+                return true;
+            }
+        } else {
+           return false;
+        }
+        return false ;
+    }
         function clear_cart($userID) {
             return $this->delete("cart", "userID = ?", [$userID]);
         }

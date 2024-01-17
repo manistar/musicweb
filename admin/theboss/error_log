@@ -1,0 +1,129 @@
+[06-Jan-2022 10:47:32 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[06-Jan-2022 10:47:41 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 10:48:00 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 10:48:09 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 10:48:15 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 10:48:17 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 10:48:17 UTC] PHP Notice:  Undefined index: a in /home2/besttime/public_html/admin/users.php on line 24
+[06-Jan-2022 10:48:19 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 13:32:26 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[06-Jan-2022 13:32:32 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:32:38 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:32:42 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 13:54:48 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[06-Jan-2022 13:54:51 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:54:55 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:54:57 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 13:55:10 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:55:10 UTC] PHP Notice:  Undefined index: a in /home2/besttime/public_html/admin/users.php on line 24
+[06-Jan-2022 13:55:12 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 13:55:16 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:55:17 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 13:55:58 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:55:58 UTC] PHP Notice:  Undefined variable: userproducts in /home2/besttime/public_html/admin/content/ads/post.php on line 27
+[06-Jan-2022 13:56:00 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 13:56:02 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:56:26 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:58:03 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:58:03 UTC] PHP Notice:  Undefined index: a in /home2/besttime/public_html/admin/ads.php on line 25
+[06-Jan-2022 13:58:05 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 13:58:07 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:58:45 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:58:47 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 13:58:50 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:58:52 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 13:58:54 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:59:48 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 13:59:50 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 14:24:58 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[06-Jan-2022 14:25:03 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[06-Jan-2022 14:25:16 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 14:25:28 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 14:25:33 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 14:26:28 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 14:26:30 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 14:31:51 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 14:31:53 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 14:32:35 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 14:32:42 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 14:32:42 UTC] PHP Notice:  Undefined index: a in /home2/besttime/public_html/admin/payment.php on line 25
+[06-Jan-2022 14:32:46 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 14:32:50 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 14:32:52 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[06-Jan-2022 14:35:32 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[06-Jan-2022 14:35:32 UTC] PHP Notice:  Undefined index: a in /home2/besttime/public_html/admin/payment.php on line 25
+[06-Jan-2022 14:35:36 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[07-Jan-2022 04:04:10 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[07-Jan-2022 04:04:18 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[07-Jan-2022 04:04:28 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[07-Jan-2022 04:04:37 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[07-Jan-2022 04:05:23 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[07-Jan-2022 04:05:24 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[07-Jan-2022 04:15:20 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[07-Jan-2022 04:15:22 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[07-Jan-2022 10:55:06 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[07-Jan-2022 10:55:41 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[07-Jan-2022 10:55:47 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[07-Jan-2022 10:55:54 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[07-Jan-2022 10:55:56 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[07-Jan-2022 10:55:57 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[07-Jan-2022 11:03:39 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[07-Jan-2022 11:03:40 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[08-Jan-2022 07:45:54 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[08-Jan-2022 07:46:00 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[08-Jan-2022 07:46:00 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home2/besttime/public_html/admin/index.php on line 177
+[08-Jan-2022 07:46:09 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[08-Jan-2022 07:46:11 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[09-Jan-2022 11:28:14 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[09-Jan-2022 11:28:22 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[09-Jan-2022 11:28:22 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home2/besttime/public_html/admin/index.php on line 177
+[09-Jan-2022 11:28:31 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[09-Jan-2022 11:28:34 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[13-Jan-2022 18:46:12 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[13-Jan-2022 18:47:39 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 18:47:39 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home2/besttime/public_html/admin/index.php on line 177
+[13-Jan-2022 18:48:34 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/besttime/public_html/admin/include/database.php:775
+Stack trace:
+#0 /home2/besttime/public_html/admin/include/database.php(121): Database->fastgetwhere('currencies', 'ID = ?', '87', 'details')
+#1 /home2/besttime/public_html/admin/include/ini.php(32): Database->getcurrency('87')
+#2 /home2/besttime/public_html/admin/header.php(2): require_once('/home2/besttime...')
+#3 /home2/besttime/public_html/admin/categories.php(1): require('/home2/besttime...')
+#4 {main}
+  thrown in /home2/besttime/public_html/admin/include/database.php on line 775
+[13-Jan-2022 18:48:38 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 18:48:50 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[13-Jan-2022 18:55:10 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 18:55:12 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[13-Jan-2022 18:56:26 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 18:56:28 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[13-Jan-2022 18:59:51 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/besttime/public_html/admin/include/database.php:775
+Stack trace:
+#0 /home2/besttime/public_html/admin/include/database.php(126): Database->fastgetwhere('settings', 'meta_name = ?', 'default_currenc...', 'details')
+#1 /home2/besttime/public_html/admin/include/ini.php(32): Database->getsettings('default_currenc...')
+#2 /home2/besttime/public_html/admin/ajax.php(2): require_once('/home2/besttime...')
+#3 {main}
+  thrown in /home2/besttime/public_html/admin/include/database.php on line 775
+[13-Jan-2022 19:02:11 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 19:02:17 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[13-Jan-2022 19:38:20 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 19:38:20 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 19:38:23 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[13-Jan-2022 19:44:13 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 19:44:16 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[13-Jan-2022 19:44:25 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 19:44:26 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[13-Jan-2022 19:44:28 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[13-Jan-2022 19:44:29 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[15-Jan-2022 10:57:27 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[18-Jan-2022 07:04:52 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[18-Jan-2022 07:05:15 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[18-Jan-2022 07:05:15 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home2/besttime/public_html/admin/index.php on line 177
+[18-Jan-2022 07:05:48 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[18-Jan-2022 07:05:48 UTC] PHP Notice:  Undefined index: a in /home2/besttime/public_html/admin/users.php on line 24
+[18-Jan-2022 07:05:58 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
+[20-Jan-2022 17:29:20 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[20-Jan-2022 17:29:21 UTC] PHP Notice:  Undefined variable: userID in /home2/besttime/public_html/admin/include/ini.php on line 8
+[20-Jan-2022 17:29:48 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[20-Jan-2022 17:29:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home2/besttime/public_html/admin/index.php on line 177
+[20-Jan-2022 17:29:59 UTC] PHP Notice:  Undefined variable: count in /home2/besttime/public_html/admin/header.php on line 246
+[20-Jan-2022 17:30:03 UTC] PHP Warning:  Declaration of address::getaddress($id, $what) should be compatible with Database::getaddress($data) in /home2/besttime/public_html/functions/address.php on line 54
