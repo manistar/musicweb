@@ -23,15 +23,15 @@ $payments = $d->getall("payment", "userID = ? order by date DESC LIMIT 5", [$use
           <!-- ./card-header -->
           <div class="card-body">
             <?php
-            switch (htmlspecialchars($_GET['a'])) {
+            switch (htmlspecialchars($_GET['p'])) {
               case 'list':
-                require "content/payment/list.php";
+                require "consts/payment/list.php";
                 break;
                 case 'invoice':
-                  require "content/payment/invoice.php";
+                  require "consts/payment/invoice.php";
                   break;
               default:
-                require "content/payment/list.php";
+                require "consts/payment/list.php";
                 break;
             }
             ?>
@@ -43,4 +43,3 @@ $payments = $d->getall("payment", "userID = ? order by date DESC LIMIT 5", [$use
       <!-- /.row -->
   </section>
 
-  <?php require "footer.php"; ?>

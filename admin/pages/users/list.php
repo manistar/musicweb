@@ -19,25 +19,25 @@
           <!-- ./card-header -->
           <div class="card-body">
             <?php
-            switch (htmlspecialchars($_GET['a'])) {
+            switch (htmlspecialchars($_GET['p'])) {
               case 'list':
-                require "conts/users/list.php";
+                require "consts/users/list.php";
                 break;
                 case 'post':
-                  require "conts/users/view.php";
+                  require "consts/users/view.php";
                   break;
               case 'add':
-                require "conts/users/add.php";
+                require "consts/users/add.php";
                 break;
               case 'view':
-                require "conts/users/view.php";
+                require "consts/users/view.php";
                 break;
               case 'edit':
-                require "conts/users/edit.php";
+                require "consts/users/edit.php";
                 break;
 
               default:
-                require "conts/users/list.php";
+                require "consts/users/list.php";
                 break;
             }
             ?>

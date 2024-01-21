@@ -255,6 +255,58 @@ class content extends database
         return ''; // If the condition is not met, return an empty string
     }
     
+    // userstable
+    function userstable($data)
+    {
+        $d = new database;
+        if ($data != "") {
+            foreach ($data as $row) { ?>
+                <tr data-widget="expandable-table" aria-expanded="false">
+
+                    <th>
+                        <b id="success<?= $row['ID'] ?>" style="display:<?php if ($row['status'] == 1) {
+                                                                            echo "block";
+                                                                        } else {
+                                                                            echo "none";
+                                                                        } ?>; color:green">Active</b>
+                        <b id="danger<?= $row['ID'] ?>" style="display:<?php if ($row['status'] == 1) {
+                                                                            echo "none";
+                                                                        } else {
+                                                                            echo "block";
+                                                                        } ?>; color:red">Deactivated<b>
+                    </th>
+                    <td><?= $row['ID']; ?></td>
+                    <td><?= $row['first_name'] . ' ' . $row['last_name']; ?></td>
+                    <td><?= $row['phone_number'] ?></td>
+                    <td><?= $row['email'] ?></td>
+                    <td><?= $row['street'] . ' ' . $d->getaddress(["cities" => $row['city'], "states" => $row['state'], "countries" => $row['country']]); ?></td>
+                    <!-- <th><?= $row['status']; ?></th> -->
+                    <td><?php echo date("F d, Y", strtotime($row['date'])); ?></td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" id="" class="btn btn-default">Action</button>
+                            <button type="button" class="btn btn-default dropdown-toggle dropdown-icon" data-toggle="dropdown">
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu" role="menu">
+                                <!-- <a class="dropdown-item" href="staff.php">Assign to staff</a> -->
+                                <!-- <a class="dropdown-item" href="#">Loan</a> -->
+                                <a class="dropdown-item" href="users.php?a=edit&id=<?php echo $row['ID']; ?>">Edit Account</a>
+                                <button class="dropdown-item" id="<?= $row['ID'] ?>" data-url="users/status" data-id="<?= $row['ID']; ?>" data-title="User Status" onclick="modalcontent(this.id)" data-toggle="modal" data-target="#modal-lg">Active/Deactive Account</button>
+                                <a class="dropdown-item" href="users.php?a=post&id=<?php echo $row['ID']; ?>">Post ADS</a>
+
+                                <!-- <a class="dropdown-item" href="#"></a> -->
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="users.php?a=view&id=<?= $row['ID'] ?>">View Account</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            <?php  }
+        } else {
+            echo "User not found";
+        }
+    }
 
     
     
