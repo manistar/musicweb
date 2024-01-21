@@ -123,6 +123,34 @@ class database
         return $this->getmethod($q, $fetch);
     }
 
+//    To get the currency
+function getcurrency($id){
+//   $d = new database;
+  return $this->getall("currencies", "ID = ?", [$id], fetch: "details");
+}
+
+function getsettings($meta_name){
+//   $d = new database;
+  return $this->getall("settings", "meta_name = ?", [$meta_name], fetch: "details");
+}
+
+  function getusername($id){
+      $data = $this->getall("users", "ID = ?", [$id], fetch: "details");
+      if(is_array($data)){
+          return $data['first_name'].' '.$data['last_name'];
+      }else{
+          $data = $this->getall("grouped", "ID = ?", [$id], fetch: "details");
+          if(is_array($data)){
+              return $data['group_name'];
+          }else{
+              return "Not found";
+          }
+      }
+      
+  }
+
+
+
 // To get number of trending in playlist
     public function getTrendingMusic($minPlayCount = 5) {
         $sql = "play_count > ?";
@@ -736,6 +764,29 @@ class database
             $d->message("Error sending email please try again later", "error");
         }
     }
+
+    function verifyassign($adminid, $customerid){
+        $d = new database; 
+        $verify = $d->getall("admins", "ID = ?", [$adminid], fetch: "details");    
+        if($verify['type'] == "admin"){
+            return true;
+        }else{
+            $verify = $d->getall("people_assign", "adminID = ? and userID = ?", ["$adminid","$customerid"], ""); 
+            if($verify > 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+}
+
+function userID($type = "admin"){
+    if($type == "users" || $type == "customers"){
+        return  $this->userID = htmlspecialchars($_SESSION['userSession']);  
+    }else{
+        return  $this->userID = htmlspecialchars($_SESSION['adminSession']);  
+    }
+}
 
     function randcar($no = 20)
     {

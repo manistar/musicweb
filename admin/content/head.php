@@ -1,5 +1,5 @@
 <?php
-require_once 'include/ini.php';
+require_once 'inis/ini.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

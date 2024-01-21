@@ -35,12 +35,12 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
-        <img src="../img /logo.png" alt="Music Web logo" class="brand-image img-circle elevation-3"
+        <img src="../upload/img/logo.png" alt="Music Web logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
         <span class="brand-text font-weight-light">
           <?= website_name ?>
         </span>
-      </a>
+      </a> 
 
       <!-- Sidebar -->
       <div class="sidebar">
@@ -51,7 +51,7 @@
           </div>
           <div class="info">
             <a href="#" class="d-block">
-              <?php echo $user['first_name'] . ' ' . $user['last_name'] . ' <br> [' . $user['ID'] . ']'; ?>
+              <?php echo $data['first_name'] . ' ' . $data['last_name'] . ' <br> [' . $data['ID'] . ']'; ?>
             </a>
           </div>
         </div>
@@ -106,13 +106,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="users.php?a=add" class="nav-link">
+                  <a href="?p=users.php?a=add" class="nav-link">
                     <i class="fa fa-plus nav-icon"></i>
                     <p>Create new user</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="users.php" class="nav-link">
+                  <a href="?p=users.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>All users</p>
                   </a>
@@ -133,13 +133,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="ads.php?a=search" class="nav-link">
+                  <a href="?p=ads.php?a=search" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Post ads</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="ads.php" class="nav-link">
+                  <a href="?p=ads.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>List Ads</p>
                   </a>
@@ -158,13 +158,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="plans.php?a=add" class="nav-link">
+                  <a href="?p=plans.php?a=add" class="nav-link">
                     <i class="fa fa-plus nav-icon"></i>
                     <p>Create Plan</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="plans.php?a=list" class="nav-link">
+                  <a href="?p=plans.php?a=list" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>All plans</p>
                   </a>

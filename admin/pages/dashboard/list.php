@@ -1,7 +1,4 @@
-<?php
-//header("Location:customers.php");
-include 'header.php';
-?>
+
 <style>
   input[type="checkbox"] {
     display: none !important;
@@ -44,7 +41,7 @@ include 'header.php';
             <div class="icon">
               <i class="fa fa-users"></i>
             </div>
-            <a href="users.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="?p=users.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -59,7 +56,7 @@ include 'header.php';
             <div class="icon">
               <i class="fas fa-bullhorn"></i>
             </div>
-            <a href="ads.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="?p=ads.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -74,7 +71,7 @@ include 'header.php';
             <div class="icon">
               <i class="far fa-check-circle"></i>
             </div>
-            <a href="payment.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="?p=payment.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -225,8 +222,8 @@ include 'header.php';
               <ul class="users-list clearfix">
                 <?php foreach ($rusers as $row) { ?>
                   <li>
-                    <img src="../upload/profile/<?= $row['image']; ?>" alt="User Image">
-                    <a class="users-list-name" title="<?= $row['first_name'] . ' ' . $row['last_name']; ?>" href="users.php?a=view&id=<?= $row['ID'] ?>"><?= $row['first_name'] . ' ' . $row['last_name']; ?></a>
+                    <img src="../upload/profile/<?= $row['upload_image']; ?>" alt="User Image">
+                    <a class="users-list-name" title="<?= $row['first_name'] . '.' . $row['last_name']; ?>" href="users.php?a=view&id=<?= $row['ID'] ?>"><?= $row['first_name'] . ' ' . $row['last_name']; ?></a>
                     <span class="users-list-date"><?php echo date("F d, Y", strtotime($row['date'])); ?></span>
                   </li>
                 <?php }  ?>

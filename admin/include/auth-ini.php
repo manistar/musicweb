@@ -17,4 +17,6 @@ require_once "function/shop.php";
 $s = new shop; 
 
 $script = [];
+
+
 ?>

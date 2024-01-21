@@ -1,6 +1,4 @@
 <?php
-// require 'include/session.php';
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
@@ -17,17 +15,23 @@ require_once 'function/staffs.php';
 // require 'function/ads.php';
 require 'function/content.php';
 require 'function/plans.php';
+require "include/ini-users.php";
 // $a = new ads; 
-$s = new shop;
-$c = new content;
 $d = new database; 
 $v = new validate;
+$s = new shop;
+$c = new content;
 $staff = new staffs;
 $plan = new plans;
 $content = new web_content;
+
 // $userID = "";
 $date = date('Y-m-d');
 
+$page = "dashboard";
+        if(isset($_GET['p'])) {
+            $page = htmlspecialchars($_GET['p']);
+        }
 
 // if(!$d->verifytoken("$userID","admins")){
 // echo "Error Please try and login again <a href='?logout'>Login again</a>";
@@ -58,34 +62,55 @@ if(isset($_GET['datefrom']) && isset($_GET['dateto']) && !empty($_GET['datefrom'
 }
 
 
+// if(isset($_SESSION['userSession'])){
+//     $userID = htmlspecialchars($_SESSION['userSession'] ?? "");
+//     $user = $d->getall("admins", "ID = ?", [$userID], fetch:"details");
+// }else{
+//     $userID = "";
+// }
+
 // Get admin Info
-$user = $d->getall("admins", "ID = ?", [$userID], fetch: "details"); 
+$userID = htmlspecialchars($_SESSION['adminSession']);
+$adminID = $userID; 
+$data = $d->getall("admins", "ID = ?", [$adminID], fetch: "details");
+//var_dump($data); // Check the type and content of $user
+
+
+// This pages trows an error of :  Trying to access array offset on value of type bool in , use the one above
+// $data = $d->getall("admins", "ID = ?", [$email], fetch: "details");
+// var_dump($data); // Check the type and content of $data
 
 // Total values
-$totals = ["users", "products", "admins"];
-foreach ($totals as $key => $value) {
-    // ${"T".$value} = $d->getall("$value", "date >= ? and date <= ?", [$datefrom, $dateto], "", fetch: "moredetails");
-    ${"T".$value} = $d->getall("$value", "date >= ? and date <= ?", [$datefrom, $dateto], fetch: "moredetails");
-}
+// $totals = ["users", "products", "admins"];
+// foreach ($totals as $key => $value) {
+//     // ${"T".$value} = $d->getall("$value", "date >= ? and date <= ?", [$datefrom, $dateto], "", fetch: "moredetails");
+//     ${"T".$value} = $d->getall("$value", "date >= ? and date <= ?", [$datefrom, $dateto], fetch: "moredetails");
+// }
 
 // charts info 
-// $Tsucessp =  $d->getall("payment", "date >= ? and date <= ? and status = ?", [$datefrom, $dateto, "success"], "");
-// $Terrorp =  $d->getall("payment", "date >= ? and date <= ? and status != ?", [$datefrom, $dateto, "success"], "");
-// $activeADS = $d->getall("products", "status = ?", ["1"], "");
-// $soldoutADS = $d->getall("products", "status = ?", ["2"], "");
-// $draftADS = $d->getall("products", "status = ?", ["3"], "");
-// $blockedADS = $d->getall("products", "status = ?", ["0"], "");
+$Tsucessp = $d->getall("payment", "date >= ? AND date <= ? AND status = ?", [$datefrom, $dateto, "success"], fetch: "");
+$Terrorp =  $d->getall("payment", "date >= ? and date <= ? and status != ?", [$datefrom, $dateto, "success"], fetch: "");
+$activeADS = $d->getall("products", "status = ?", ["1"], fetch: "");
+$soldoutADS = $d->getall("products", "status = ?", ["2"], fetch: "");
+$draftADS = $d->getall("products", "status = ?", ["3"], fetch: "");
+$blockedADS = $d->getall("products", "status = ?", ["0"], fetch: "");
 
-
-// recent tabs
+// $payments = $d->getall("payment", "date DESC", fetch: "");
+// recent tabs 
 $rpayment = $d->getall("payment", "transaction_id != ? and status != ? order by date DESC LIMIT 7", ["",""], fetch: "moredetails");
-// $rads = $d->getall("products", "date DESC", ["LIMIT 8"]);
-// $rusers = $d->getall("users", "date DESC", ["LIMIT 8"]);
+// $rads = $d->getall("products", "date DESC LIMIT 8");
+$rads = $d->getall("products", "userID = ? order by date DESC LIMIT 8", [$userID], fetch: "moredetails");
+$rusers = $d->getall("users", "", [], fetch: "moredetails");
 
+
+// To get total registered users
+$Tusers = $d->getall("users", fetch: "");
+$Tadmins = $d->getall("admins", fetch: "");
+$Tproducts = $d->getall("products", fetch: "");
 
 
 //default values
-// define("currency", $d->getcurrency($d->getsettings("default_currency")['meta_value']));
+define("currency", $d->getcurrency($d->getsettings("default_currency")['meta_value']));
 define("content", $d->getall("content", "ID = ?", ["1"], fetch: "details"));
 define("website_name", content['website_name']);
 // define("free_for_all", $d->getall("settings", "meta_name = ?", ["free_for_all"], fetch: "details")['meta_value']);
@@ -100,3 +125,4 @@ define("website_name", content['website_name']);
 // define("website_settings", $d->fastget("settings", "meta_name", ";"));
 // print_r(getWeekDays('2021-06-01','2021-06-30', 6)); 
 ?>
+

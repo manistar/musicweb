@@ -8,10 +8,22 @@ if(isset($_GET['a']) && $_GET['p'] == "invoice" && isset($_GET['id']) && $_GET['
     // print_r($verify);
 
 ?>
-<section class="content bg-white osahan-main-body rounded shadow-sm overflow-hidden">
+
+<section class="main">
+    <div class="container-fluid">
+        <div class="row row--grid">
+
+            <div class="col-12">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb__item"><a href="index-2.html">Home</a></li>
+                    <li class="breadcrumb__item breadcrumb__item--active">Register</li>
+                </ul>
+            </div>
+
+<!-- <section class="content bg-white osahan-main-body rounded shadow-sm overflow-hidden">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12"> -->
                 <!-- <div class="callout callout-info">
                     <h5><i class="fas fa-info"></i> Note:</h5>
                     This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.

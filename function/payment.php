@@ -41,7 +41,7 @@
                 return json_encode($json);
             }
             // clear cart
-            // $this->clear_cart($userID);
+            $this->clear_cart($userID);
             // place user info into payment
             $payment['fullname'] = $user['first_name'].' '.$user['last_name'];
             $payment['email'] = $user['email'];
@@ -69,7 +69,7 @@
         return false;
         }
 
-        
+
     function validate_payment($transID,  $amount) : bool
     {
         $amount = (float)$amount;

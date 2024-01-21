@@ -34,6 +34,9 @@
             </div>
     </section>
 
+
+    
+
 <?php require_once "content/footer.php"; ?>
     <script>
         //    chatBox =  document.getElementById("chatdiv").innerHTML

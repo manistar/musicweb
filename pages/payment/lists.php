@@ -5,7 +5,7 @@
             $d->loadpage("index?payment&action=success");
             exit();
         }else{
-            $d->loadpage("index?payment&action=success");
+            $d->loadpage("index?payment&action=error");
             exit();
         }
     }
