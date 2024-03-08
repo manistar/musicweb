@@ -1,5 +1,5 @@
 <?php 
-class ads extends fontusers {
+class ads extends database {
 
     // post new ads
 
@@ -12,7 +12,7 @@ class ads extends fontusers {
         if (is_array($value)) {
             $product_name = $value['product_name'];
             $productID = $value['ID'];
-            $check = $d->multiplegetwhere("products", "userID = ? and product_name = ?", [$userID, $product_name], "");
+            $check = $d->getall("products", "userID = ? and product_name = ?", [$userID, $product_name], fetch: "");
             if ($check > 0) {
                 $this->err = true;
                 $d->message("Duplicate Product", "error");
@@ -36,7 +36,7 @@ class ads extends fontusers {
         if(is_array($value)){
             $verify = $d->verifyrole(htmlspecialchars($_SESSION['adminSession']), "managecategories");
                if ($verify) {
-                    if($d->fastgetwhere("categories", "name = ?", $value['name'], "") == 0){
+                    if($d->getall("categories", "name = ?", $value['name'], "") == 0){
                         $insert = $d->quick_insert("categories", "", $value, $message = $value['name']." added successfully");
                     }else{
                         $d->message("This look like a duplicate category", "error");
@@ -52,7 +52,7 @@ class ads extends fontusers {
         if(is_array($value)){
             $verify = $d->verifyrole(htmlspecialchars($_SESSION['adminSession']), "managecategories");
                if ($verify) {
-                    if($d->multiplegetwhere("sub_categories", "name = ? and catID = ?", [$value['name'], $value['catID']], "") == 0){
+                    if($d->getall("sub_categories", "name = ? and catID = ?", [$value['name'], $value['catID']], fetch: "") == 0){
                         $insert =   "";   
                     }else{
                         $d->message("This look like a duplicate sub category", "error");
@@ -67,7 +67,7 @@ class ads extends fontusers {
         $d = new database;
         $id = htmlspecialchars($_GET['transid']);
         $userID = htmlspecialchars($_GET['userID']);
-        $check = $d->multiplegetwhere("products", "ID = ? and userID = ?", [$id, $userID], "");
+        $check = $d->getall("products", "ID = ? and userID = ?", [$id, $userID], fetch: "");
         if ($check > 0) {
             $path = "../upload/products/";
             $title = uniqid("img");
@@ -88,7 +88,7 @@ class ads extends fontusers {
         if(!empty($id)){
             $value = $d->checkmessage(["product name", "category", "sub category", "tags_null", "product_condition_null", "price", "last price_null", "description"]);
             if(is_array($value)){
-                $data = $d->fastgetwhere("products", "ID = ?", $id, "details");
+                $data = $d->getall("products", "ID = ?", [$id], "details");
                 if(is_array($data)){
                     $userID = $data['userID'];
                     if($d->verifyrole(htmlspecialchars($_SESSION['adminSession']), "deactivateusers") && $d->verifyassign($d->userID(), $id)){
@@ -97,7 +97,7 @@ class ads extends fontusers {
                             $where = "ID ='$id'";
                             $update = $d->update("products", "", $where, $value);
                             if($update){
-                                $ads = $d->fastgetwhere("products", "ID = ?", $id, "details");
+                                $ads = $d->getall("products", "ID = ?", [$id], fetch: "details");
                                 $return = [
                                     "message" => ["Account Updated", "You have successfully update this user's account", "success"],
                                     "function" => ["updatetable", "data"=>["adstable", $userID]],
@@ -127,7 +127,7 @@ class ads extends fontusers {
         $status = htmlspecialchars($_POST['status']);
         if($d->verifyrole(htmlspecialchars($_SESSION['adminSession']), "deactivateusers") && $d->verifyassign($d->userID(), $userID)){
             if ($status == "1" || $status == "2" || $status == "3" || $status == "0") {
-                $check = $d->multiplegetwhere("products", "ID = ? and userID = ?", [$adsID, $userID], "");
+                $check = $d->getall("products", "ID = ? and userID = ?", [$adsID, $userID], fetch: "");
                 if ($check > 0) {
                     $where  = "ID = '$adsID'";
                     $update = $d->update("products", "", $where, ["status" => $status]);
@@ -136,7 +136,7 @@ class ads extends fontusers {
                         if(isset($_POST['a']) && $_POST['a'] != "list"){
                             $passid = $userID;
                         }
-                        $ads = $d->fastgetwhere("products", "ID = ?", $adsID, "details");
+                        $ads = $d->getall("products", "ID = ?", [$adsID], fetch: "details");
                         $return = [
                             "message" => ["Ads Updated", "Ads status updated successfully", "success"],
                             "function" => ["updatetable", "data"=>["adstable", "$passid"]],
@@ -160,14 +160,14 @@ class ads extends fontusers {
     {
         $d = new database;
         // $userID = htmlspecialchars($_SESSION['userSession']);
-        $check = $d->fastgetwhere("image_upload", "ID = ?", $id, "details");
+        $check = $d->getall("image_upload", "ID = ?", [$id], fetch: "details");
         if ($check > 0) {
             $img = $check['name'];
             $forID = $check['forID'];
             if ($d->delete("ID", "image_upload", $id)) {
                 if (file_exists("../upload/products/$img")) {
                     if (unlink("../upload/products/$img")) {
-                        $data = $d->fastgetwhere("image_upload", "forID = ?", $forID, "moredetails");
+                        $data = $d->getall("image_upload", "forID = ?", [$forID], fetch: "moredetails");
                         return $data;
                     }
                 }
@@ -183,7 +183,7 @@ class ads extends fontusers {
     {
         $d = new database;
         if ($id != "") {
-            $data = $d->fastgetwhere("products", "ID = ?", $id, "details");
+            $data = $d->getall("products", "ID = ?", [$id], fetch: "details");
             $status = $data['status'];
             if ($no) {
                 return $status;
@@ -215,7 +215,7 @@ class ads extends fontusers {
     function checkpname($oldname, $newname, $id){
         $d = new database;
         if($oldname != $newname){
-            if($d->multiplegetwhere("products", "userID = ? and product_name = ?", [$id, $newname], "") > 0){
+            if($d->getall("products", "userID = ? and product_name = ?", [$id, $newname], "") > 0){
                 $d->message("Duplicate Product", "error");
                 return false;
             }else{

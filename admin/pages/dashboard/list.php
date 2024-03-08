@@ -1,7 +1,17 @@
+<?php 
+//This is for pagination 
+$start = 0;
+if(isset($_GET['s'])) {
+  $start = (int)htmlspecialchars($_GET['s']);
+}
+$ads = $d->getall("products", "date != ? order by date desc LIMIT $start, 5", [""], fetch: "moredetails");;?>
 
 <style>
   input[type="checkbox"] {
     display: none !important;
+  }
+  tbody tr td {
+    padding-left: 20px;
   }
 </style>
 <!-- Content Wrapper. Contains page content -->
@@ -255,26 +265,25 @@
             </div>
             <div class="card-body" style="display: block;">
               <ul class="products-list product-list-in-card pl-2 pr-2">
-                <?php foreach ($rads as $row) { ?>
-                  <li class="item">
-                    <div class="product-img">
-                      <img src="../upload/products/<?= $p->getproductimage($row['ID']); ?>" alt="Product Image" class="img-size-50">
-                    </div>
-                    <div class="product-info">
-                      <a href="../product.php?id=<?= $row['ID'] ?>" class="product-title"><?= $row['product_name'] ?>
-                        <span class="badge badge-dark float-right"><?php echo currency['symbol'] . number_format($row['price']); ?></span></a>
-                      <span class="product-description">
-                        <?= $row['description'] ?>
-                      </span>
-                    </div>
-                  </li>
-                <?php } ?>
+                <table class="table-responsive">
+                  <tbody>
+
+                <?php 
+                if(is_array($ads) || $ads->rowCount() > 0) {
+                  require_once "function/products.php";
+                  $p = new products;
+                  foreach ($ads as $row) {
+                  // var_dump($ads->rowCount());
+                  $c->adstable($row);
+                    } } ?>
+                  </tbody>
+                </table>
                 <!-- /.item -->
               </ul>
             </div>
             <!-- /.card-body -->
             <div class="card-footer text-center">
-              <a href="ads.php">View All Users</a>
+              <a href="?p=ads.php">View All Users</a>
             </div>
             <!-- /.card-footer -->
           </div>

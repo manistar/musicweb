@@ -28,6 +28,23 @@ class settings extends database{
         }
     }
 
+    function password_updated($change_password) {
+        $d = new database;
+        $data = $this->validate_form($change_password, "admins");
+        // var_dump($data);
+        if (is_array($data) && isset($data['ID']) && !empty($data['ID'])) {
+            $uID = $data['ID'];
+            $password = $data['password'];
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $this->update("admins", ["password" => $hashedPassword], "ID = '$uID'");
+        }
+        if($data){
+            $d->message("password has been Updated Successfully", "success");
+        }else{
+            return false;
+        }
+    }
+
 
     
 }

@@ -69,7 +69,7 @@ require_once "include/auth-ini.php";
                                             <tr>
                                                 <td>
                                                     <div class="cart__img">
-                                                        <img src="musica/assets/img/store/<?= $carting['img']; ?>" alt>
+                                                        <img src="admin/upload/<?= $carting['upload_image']; ?>" alt>
                                                             </div>
                                                         </td>
                                                         <td><a href="product.html">

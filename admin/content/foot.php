@@ -98,4 +98,6 @@
   }
 </script>
 
+<script src="js/my.js"></script>
 <script src="js/myjs.js"></script>  
+<!-- <script src="js/js.js"></script>    -->

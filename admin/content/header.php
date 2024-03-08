@@ -199,16 +199,16 @@
 
 
             <li class="nav-item">
-              <a href="categories.php?a=main" class="nav-link">
-                <i class="nav-icon fas fa-list"></i>
+              <a href="?p=shop" class="nav-link">
+                <i class="nav-icon fas fa-store"></i>
                 <p>
-                  Manage Categories
+                  Manage Shop
                 </p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="payment.php" class="nav-link">
+              <a href="?p=payment.php" class="nav-link">
                 <i class="nav-icon fas fa-money-check"></i>
                 <p>
                   Payment
@@ -218,7 +218,7 @@
             <!-- co-operateive end -->
 
             <li class="nav-item">
-              <a href="settings.php" class="nav-link">
+              <a href="?p=settings.php" class="nav-link">
                 <i class="nav-icon fas fa-cogs"></i>
                 <p>
                   Settings
@@ -255,7 +255,7 @@
 
 
             <li class="nav-item">
-              <a href="password.php" class="nav-link">
+              <a href="?p=password.php" class="nav-link">
                 <i class="nav-icon fas fa-key"></i>
                 <p>
                   Password

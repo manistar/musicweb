@@ -14,9 +14,9 @@ require_once 'function/payment.php';
 $p = new payment;
 require 'include/ini-payment.php';
 require_once "function/shop.php";
+
+require_once 'consts/store.php';
+require_once "include/ini-users.php";
 $s = new shop; 
-
 $script = [];
-
-
 ?>

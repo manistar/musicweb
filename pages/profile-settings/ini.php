@@ -19,8 +19,9 @@ $s = new settings;
 
     $userID = htmlspecialchars($_SESSION['userSession']);
     $data = $d->getall("users", "ID = ?", [$userID], fetch:"details");
-
-
+    
+ 
+ 
 $profile_settings = [
  "ID" => ["input_type"=>"hidden", "is_required"=>false],
 //  "userID" => ["input_type"=>"hidden", "is_required"=>false],

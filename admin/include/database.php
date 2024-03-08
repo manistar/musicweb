@@ -28,6 +28,18 @@ class database
         // $this->userID = htmlspecialchars($_SESSION['adminSession']);  
     }
 
+    function categoryname($id, $type = "category"){
+        $d = new database;
+        if(empty($id)) return "Not assigned";
+        if($type == "category"){
+            $catname = $d->getall("categories", "ID = ?", [$id], fetch:"details");
+          return  $catname = $catname['name'];
+        }else{
+            $catname = $d->getall("sub_categories", "ID = ?", [$id], fetch:"details");
+            return  $catname = $catname['name'];
+        }
+        
+    }
 
     function get_visitor_details() {
         // ip, browser, theme, country, postal_code, state, city
@@ -88,6 +100,30 @@ class database
         }
     }
 
+    function basicuserstatus($userid){
+        $d = new database;
+        $checkuserstatus = $this->getall("users", "ID = ? and status = ?", [$userid, "1"], fetch: "moredetails");
+        if($checkuserstatus > 0){
+                return true;
+        }else{
+            return false;
+        }
+    }
+
+     public function verifyrole($id, $role){
+        $verify = $this->getall("admins", "ID = ?", [$id], fetch: "details");    
+        if($verify['type'] == "admin"){
+            return true;
+        }else{
+            $verify = $this->getall("roles", "userID = ? and therole = ?", ["$id","$role"], fetch: "moredetails"); 
+            if($verify > 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+   
    function new_notification(array $data, $what = "quick") {
         if(is_array($what != "quick")) {
             if(!isset($_POST['time_set'])) {
@@ -765,6 +801,26 @@ function getsettings($meta_name){
         }
     }
 
+    function getproductimage($id, $type = "")
+    {
+        $d = new database;
+        if ($type == "") {
+            $data = $d->getall("products", "ID = ?", [$id], fetch: "details");
+            if (is_array($data)) {
+                return $data['upload_image'];
+            } else {
+                return "preview.jpg";
+            }
+        } else {
+            $data = $d->getall("products", "ID = ?", [$id], fetch: "moredetails");
+            if (!empty($data)) {
+                return $data;
+            } else {
+                return "preview.jpg";
+            }
+        }
+    }
+
     function verifyassign($adminid, $customerid){
         $d = new database; 
         $verify = $d->getall("admins", "ID = ?", [$adminid], fetch: "details");    
@@ -787,6 +843,7 @@ function userID($type = "admin"){
         return  $this->userID = htmlspecialchars($_SESSION['adminSession']);  
     }
 }
+
 
     function randcar($no = 20)
     {

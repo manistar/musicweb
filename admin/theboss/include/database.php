@@ -1332,6 +1332,7 @@ protected function movefiles($domain){
 
     function categoryname($id, $type = "category"){
         $d = new database;
+        if(empty($id)) return "Not assigned";
         if($type == "category"){
             $catname = $d->fastgetwhere("categories", "ID = ?", $id, "details");
           return  $catname = $catname['name'];

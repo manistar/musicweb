@@ -1,4 +1,4 @@
-
+<?php require_once "inis/ini.php";?>
 <!-- Select2 -->
 <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
 <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
@@ -24,16 +24,16 @@
                 require "consts/users/list.php";
                 break;
                 case 'post':
-                  require "consts/users/view.php";
+                  require "view.php";
                   break;
               case 'add':
-                require "consts/users/add.php";
+                require "add.php";
                 break;
               case 'view':
-                require "consts/users/view.php";
+                require "view.php";
                 break;
               case 'edit':
-                require "consts/users/edit.php";
+                require "edit.php";
                 break;
 
               default:
@@ -43,7 +43,7 @@
             ?>
             <!-- /.card-body -->
           </div>
-          <!-- /.card -->
+          <!-- /.card --> 
         </div>
       </div>
       <!-- /.row -->

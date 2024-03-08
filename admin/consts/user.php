@@ -1,16 +1,17 @@
 <?php
-$user_form = [
-    "ID" => ["input_type"=>"hidden", "is_required"=>false],
-    "first_name" => [],
-    "last_name" => [],
-    "email" => ["input_type"=>"email"],
-    "phone_number" => ["input_type"=>"number"],
-    "gender" => ["placeholder" => "Select your gender", "is_required" => true, "options" => ["Male" => "Male", "Female" => "Female"], "type" => "select"],
-    "password" => ["input_type"=>"password"],
-    "confirm_password" => ["input_type"=>"password"],
-    "Referral_code" => ["placeholder" => "UX920", "is_required" => false,],  
-    // "input_data" => ["full_name" => "seriki gbenga", "gender"=>"Male"],
-];
+// require_once "include/ini-users.php";
+
+// if (isset($_GET['id'])) {
+//     // Sanitize the input
+//     $userID = htmlspecialchars($_GET['id']);
+
+//     // Fetch user details based on the user ID
+//     $data = $d->getall("users", "ID = ?", [$userID], fetch: "details");
+// }
+
+
+
+// htmlspecialchars($_SESSION['adminSession']);
 
 $user_validating = [
     "email" => [

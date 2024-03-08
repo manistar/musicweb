@@ -21,6 +21,13 @@ if (isset($_POST['upload_music'])) {
     return null;
 }
 
+
+if(isset($_POST['create_products'])){
+    require_once "inis/ini.php";
+    echo $i->upload_products($store_insert);
+    return null;
+}
+
 if(isset($_POST['newpayment'])){
     require_once "include/auth-ini.php";
     require_once "include/ini-payment.php";
@@ -43,11 +50,22 @@ if (isset($_POST['update_profile_settings'])) {
     return null;
 }
 
+// if(isset($_POST['update_password'])){
+//     $staff->changepassword();
+// }
 if (isset($_POST['update_password'])) {
-    require_once "pages/profile-settings/ini.php";
+    require_once "pages/password/ini.php";
     echo $s->profile_password_update($change_password);
     return null;
 }
+// admin pass updated
+if (isset($_POST['update_pass'])) {
+    require_once "pages/password/ini.php";
+    require_once "function/profile.php";
+    echo $s->password_updated($change_password);
+    return null;
+}
+
 
 if (isset($_POST['play_to_add'])) {
     $userID = 'userID';

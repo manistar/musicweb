@@ -1,6 +1,6 @@
 
 <?php 
-    class fontusers extends payment {
+    class fontusers extends database {
         public $err = false;
 
         function updateaddress($id){
@@ -111,7 +111,6 @@
         }
 
         function newfollow($userid){
-            $d = new database;
             if(!isset($_SESSION['userSession'])){
                 echo "<a href='signin.php' style='color:black'>Login first</a>";
                 exit();
@@ -122,14 +121,14 @@
             }
             // echo "no";
             $userID = htmlspecialchars($_SESSION['userSession']);
-            $check = $d->multiplegetwhere("followers", "userID = ? and followID = ?", [$userID, $userid], "");
+            $check = $this->getall("followers", "userID = ? and followID = ?", [$userID, $userid], "");
             if($check > 0){
-               $unfollow = fontusers::unfollow($userid);
+               $unfollow = $this->unfollow($userid);
                if($unfollow){
                 echo "Follow";
                 }
             }else{
-               $follow =  fontusers::follower($userid);
+               $follow =  $this->follower($userid);
                if($follow){
                    echo "Unfollow";
                }
@@ -137,21 +136,18 @@
         }        
         
         function totalfollowers($userid){
-            $d = new database;
-            return $d->fastgetwhere("followers", "followID = ?", $userid, "");
+            return $this->getall("followers", "followID = ?", [$userid], fetch: "");
         }
 
         function totalfollowing($userid){
-            $d = new database;
-            return $d->fastgetwhere("followers", "userID = ?", $userid, "");
+            return $this->getall("followers", "userID = ?", [$userid], fetch: "");
         }
 
         function follower($userid){
-            $d = new database;
             $userID = htmlspecialchars($_SESSION['userSession']);
-            $check = $d->multiplegetwhere("followers", "userID = ? and followID = ?", [$userID, $userid], "");
+            $check = $this->getall("followers", "userID = ? and followID = ?", [$userID, $userid], fetch: "moredetails");
            if($check == 0){
-                if($d->quick_insert("followers", "", ["userID"=>$userID, "followID"=>$userid])){
+                if($this->quick_insert("followers", "", ["userID"=>$userID, "followID"=>$userid])){
                     return true;
                 }
            }else{
@@ -160,11 +156,10 @@
         }
 
         function unfollow($userid){
-            $d = new database;
             $userID = htmlspecialchars($_SESSION['userSession']);
-            $check = $d->multiplegetwhere("followers", "userID = ? and followID = ?", [$userID, $userid], "details");
+            $check = $this->getall("followers", "userID = ? and followID = ?", [$userID, $userid], fetch: "moredetails");
            if(is_array($check)){
-                if($d->delete("ID", "followers", $check['ID'], "no")){
+                if($this->delete("ID", "followers", $check['ID'], "no")){
                     return true;
                 }
            }else{
@@ -173,9 +168,8 @@
         }
 
         function checkfollow($userid){
-            $d = new database;
             $userID = htmlspecialchars($_SESSION['userSession']);
-            $check = $d->multiplegetwhere("followers", "userID = ? and followID = ?", [$userID, $userid], "details");
+            $check = $this->getall("followers", "userID = ? and followID = ?", [$userID, $userid], fetch: "moredetails");
             if($check > 0){
                 return "Unfollow";
             }else{
@@ -185,39 +179,38 @@
 
         
         function newcard($userID, $txref, $id){
-            $d = new database;
+      
             $pay = new payment;
             $verify = $pay->verifypayment($userID, $txref, $id);
             if($verify && $verify['status'] == "success"){
                 if($verify['data']['payment_type'] == "card"){
                     if($verify['data']['card']['type'] != "VISA" && $verify['data']['card']['type'] != "MASTERCARD"){
-                        $d->message("Error: This card can not be added you can only add your MASTER CARD or VISA CARD", "error");
+                        $this->message("Error: This card can not be added you can only add your MASTER CARD or VISA CARD", "error");
                     }else{
-                        $check = $d->multiplegetwhere("cards", "first_6digits = ? and last_4digits =?", [$verify['data']['card']['first_6digits'], $verify['data']['card']['last_4digits']], "");
+                        $check = $this->multiplegetwhere("cards", "first_6digits = ? and last_4digits =?", [$verify['data']['card']['first_6digits'], $verify['data']['card']['last_4digits']], "");
                         if($check > 0){
-                            $d->message("This is a duplicate card", "error");
+                            $this->message("This is a duplicate card", "error");
                         }else{
                             $data = ["userID"=>"$userID", "token"=>$verify['data']['card']['token'], "issuer"=>$verify['data']['card']['issuer'], "country"=>$verify['data']['card']['country'], "first_6digits"=>$verify['data']['card']['first_6digits'], "last_4digits"=>$verify['data']['card']['last_4digits'], "expire_date"=>$verify['data']['card']['expiry'], "type"=>$verify['data']['card']['type']];
-                            $insert = $d->quick_insert("cards", "", $data, "Card added successfully");
+                            $insert = $this->quick_insert("cards", "", $data, "Card added successfully");
                             if($insert){
                                 return true;
                             }else{
-                                $d->message("Error: sorry something went wrong. You can reload page to try again", "error");
+                                $this->message("Error: sorry something went wrong. You can reload page to try again", "error");
                             }
                         }
                     }
                 }else{
-                    $d->message("Error: Payment was successful but seems you changed the payment method to ".$verify['data']['payment_type']." please try again and only pay with your ATM master card or VISA card", "error");
+                    $this->message("Error: Payment was successful but seems you changed the payment method to ".$verify['data']['payment_type']." please try again and only pay with your ATM master card or VISA card", "error");
                 }
             }
         }
 
         function removecard($id){
-            $d = new database;
             $userID = htmlspecialchars($_SESSION['userSession']);
-            $card = $d->multiplegetwhere("cards", "ID = ? and userID = ?", [$id, $userID], "details");
+            $card = $this->getall("cards", "ID = ? and userID = ?", [$id, $userID], fetch: "details");
             if(is_array($card)){
-                if($d->delete("ID", "cards", $id, "no")){
+                if($this->delete("ID", "cards", $id, "no")){
                     $return = [
                         "message" => ["Success", "Card Removed", "success"],
                         "function" => ["removediv", "data"=>[$id, "null"]],
@@ -228,10 +221,10 @@
         }
 
         function userstatus($userid){
-            $d = new database;
-            $checkuserstaus = $d->multiplegetwhere("users", "ID = ? and status = ?", [$userid, "1"], "");
-            if($checkuserstaus > 0){
-                $checkplan = $d->multiplegetwhere("subscriptions", "userID = ? and status = ?", [$userid, "1"], "");
+          
+            $checkuserstatus = $this->getall("users", "ID = ? and status = ?", [$userid, "1"], fetch: "moredetails");
+            if($checkuserstatus > 0){
+                $checkplan = $this->getall("subscriptions", "userID = ? and status = ?", [$userid, "1"], fetch: "moredetails");
                 if($checkplan > 0){
                     return true;
                 }else{
@@ -242,32 +235,32 @@
             }
         }
         function free_trial($id){
-            $d = new database;
+           
             $userID = htmlspecialchars($_SESSION['userSession']);
-            $plan = $d->multiplegetwhere("plans", "ID = ? and free_trial = ? and status = ?", [$id, "yes", "1"], "details");
+            $plan = $this->getall("plans", "ID = ? and free_trial = ? and status = ?", [$id, "yes", "1"], "details");
             if(is_array($plan)){
-                $card = $d->multiplegetwhere("cards", "userID = ? and token != ? and status = ?", [$userID, "", "1"], "details");
+                $card = $this->getall("cards", "userID = ? and token != ? and status = ?", [$userID, "", "1"], "details");
                 if(is_array($card)){
-                    $free = $d->fastgetwhere("settings", "meta_name = ?", "free_trial_duration", "details");
+                    $free = $this->getall("settings", "meta_name = ?", ["free_trial_duration"], fetch: "details");
                     if(is_array($free)){
                         $start_date = date('Y-m-d');
-                        $end_date = $d->addupdate($free['meta_value'], $start_date);
-                        $check = $d->multiplegetwhere("subscriptions", "userID = ? and status = ?", [$userID, "1"], "details");
+                        $end_date = $this->addupdate($free['meta_value'], $start_date);
+                        $check = $this->getall("subscriptions", "userID = ? and status = ?", [$userID, "1"], "details");
                         if(is_array($check)){
-                            $d->message("you have ".$check['plan_type']." active please go to your <a href='account.php?settings&plan'> plan setting </a> and deactive and try again", "error");
+                            $this->message("you have ".$check['plan_type']." active please go to your <a href='account.php?settings&plan'> plan setting </a> and deactive and try again", "error");
                         }else{
                             $data = ["ID"=>uniqid(), "userID"=>$userID, "planID"=>$plan['ID'], "plan_type"=>"free_trial", "cardID"=>$card['ID'], "token"=>$card['token'], "start_date"=>$start_date, "end_date"=>$end_date];
-                            $insert = $d->quick_insert("subscriptions", "", $data, $free['meta_value']." day(s) free trial for ".$plan['name']." is now active. Enjoy!!");
+                            $insert = $this->quick_insert("subscriptions", "", $data, $free['meta_value']." day(s) free trial for ".$plan['name']." is now active. Enjoy!!");
                             if($insert){
                                 return true;
                             }
                         }
                     }
                 }else{
-                    $d->message("Sorry this card is not active", "error");
+                    $this->message("Sorry this card is not active", "error");
                 }
             }else{
-                $d->message("Plan not found or may not be active.", "error");
+                $this->message("Plan not found or may not be active.", "error");
             }
         }
 
@@ -275,19 +268,18 @@
                 $check = 1;
                 // verify payment
                 $pay = new payment;
-                $d = new database;
                 // $userID = htmlspecialchars($_SESSION['userSession']);
                 if($type == "card"){
-                    $paydata = $d->fastgetwhere("payment", "ref = ?", $transid, "details");
+                    $paydata = $this->getall("payment", "ref = ?", $transid, fetch: "details");
                     $data = array("status"=>"success", "price"=>$paydata['price']);
                     $ref = $paydata['ref'];
                 }else{
-                    $paydata = $d->fastgetwhere("payment", "transaction_id = ?", $transid, "details");
+                    $paydata = $this->getall("payment", "transaction_id = ?", $transid, fetch: "details");
                     $ref = $paydata['ref'];
                     $data = $pay->verifypayment($userID, $transid, $ref);
                 }
                 
-                $plan = $d->fastgetwhere("plans", "ID = ?", $paydata['payforID'], "details");
+                $plan = $this->getall("plans", "ID = ?", $paydata['payforID'], fetch: "details");
                 // check if payment for is for this plan
                 // print_r($data);
 
@@ -296,15 +288,15 @@
                 }
                  $paydata['payforID']."/".$id;
                 // check if no sub with is transaction id
-                if($d->multiplegetwhere("subscriptions", "userID = ? and planID = ? and token = ?", [$userID, $id, $transid], "") == 0){
+                if($this->getall("subscriptions", "userID = ? and planID = ? and token = ?", [$userID, $id, $transid], "") == 0){
                     $check++;
                 }
                 if($check == 3){
                     $duration = $data['price'] / $plan['price'];
                     $start_date = date('Y-m-d');
-                    $end_date = $d->addupdate($duration, $start_date);
+                    $end_date = $this->addupdate($duration, $start_date);
                     $data = ["ID"=>uniqid(), "userID"=>$userID, "planID"=>$plan['ID'], "plan_type"=>"subscription", "cardID"=>"null", "token"=>"$transid", "start_date"=>$start_date, "end_date"=>$end_date];
-                    $insert = $d->quick_insert("subscriptions", "", $data, "Your ".$plan['name']." subscription is now activated");
+                    $insert = $this->quick_insert("subscriptions", "", $data, "Your ".$plan['name']." subscription is now activated");
                             if($insert){
                                 return true;
                             }
@@ -324,8 +316,7 @@
         // }
 
         function getuser($id, $what){
-            $d = new database;
-            $data = $d->fastgetwhere("users", "ID = ?", $id, "details");
+            $data = $this->getall("users", "ID = ?", [$id], fetch: "details");
             return $data["$what"];
         }
     }

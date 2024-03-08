@@ -731,7 +731,7 @@
                     ?>
                     <div class="product">
                         <a href="#" class="product__img">
-                            <img src="musica/assets/img/store/<?= $row['img']; ?>" alt>
+                            <img src="admin/upload/<?= $row['upload_image']; ?>" alt>
                         </a>
                         <h3 class="product__title">
                             <a href="product.html">

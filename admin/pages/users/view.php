@@ -1,26 +1,40 @@
 <?php
-require_once "include/ini-users.php";
+$userID = $_GET["id"]; // get the user id from url parameter
+$data = $d->getall("users", "ID = ?", [$userID], fetch:"details");
+// require_once "include/ini-users.php";
 ?>
+<!-- Content Wrapper. Contains page content -->
+<diV class="content-wrapper">
+ 
+  <!-- Main content -->
+  <section class="content">
+    <!-- START ACCORDION & CAROUSEL-->
+    <!-- <h5 class="mt-4 mb-2">Your Templates</h5> -->
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
 <!-- Main content -->
-<section class="content">
+<!-- <section class="content">
     <div class="container-fluid" id="content">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3"> -->
 
                 <!-- Profile Image -->
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="../upload/profile/<?= $user['image']; ?>" alt="User profile picture">
+                            <img class="profile-user-img img-fluid img-circle" src="../upload/profile/<?= $data['upload_image'] ?>" alt="User profile picture">
                         </div>
 
-                        <h3 class="profile-username text-center"><?= $user['first_name'] . ' ' . $user['last_name']; ?></h3>
-                        <p class="text-muted text-center"><a href="mailto:<?= $user['email'] ?>"><?= $user['email'] ?></a></p>
+                        <h3 class="profile-username text-center"><?= $data['first_name'] . ' ' . $data['last_name']; ?></h3>
+                        <p class="text-muted text-center"><a href="mailto:<?= $data['email'] ?>"><?= $data['email'] ?></a></p>
                         <ul class="list-group list-group-unbordered mb-3">
-                            <li id="e<?= $user['ID'] ?>" data-url="users/followers" data-id="<?= $user['ID']; ?>" data-title="Users following <?= $user['first_name'] ?>" onclick="modalcontent(this.id)" data-toggle="modal" data-target="#modal-lg" class="list-group-item btn">
+                            <li id="e<?= $data['ID'] ?>" data-url="users/followers" data-id="<?= $data['ID']; ?>" data-title="Users following <?= $data['first_name'] ?>" onclick="modalcontent(this.id)" data-toggle="modal" data-target="#modal-lg" class="list-group-item btn">
                                 <b>Followers</b> <a class="float-right"><?= number_format($fu->totalfollowers($userid)); ?></a>
                             </li>
-                            <li id="f<?= $user['ID'] ?>" data-url="users/following" data-id="<?= $user['ID']; ?>" data-title="<?= $user['first_name'] ?> following" onclick="modalcontent(this.id)" data-toggle="modal" data-target="#modal-lg" class="list-group-item btn">
+                            <li id="f<?= $user['ID'] ?>" data-url="users/following" data-id="<?= $data['ID']; ?>" data-title="<?= $data['first_name'] ?> following" onclick="modalcontent(this.id)" data-toggle="modal" data-target="#modal-lg" class="list-group-item btn">
                                 <b>Following</b> <a class="float-right"><?= number_format($fu->totalfollowing($userid)); ?></a>
                             </li>
                             <!-- <li class="list-group-item">
@@ -79,7 +93,7 @@ require_once "include/ini-users.php";
             <!-- /.col -->
             <div class="col-md-9 p-3">
                 <?php
-                switch (htmlspecialchars($_GET['a'])) {
+                switch (htmlspecialchars($_GET['p'])) {
                     case 'post':
                         require "content/ads/post.php";
                         break;
@@ -196,6 +210,8 @@ require_once "include/ini-users.php";
             <!-- /.col -->
         </div>
         <!-- /.row -->
+        </div>
     </div><!-- /.container-fluid -->
 </section>
+</diV>
 <!-- /.content -->
