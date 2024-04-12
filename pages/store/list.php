@@ -50,7 +50,7 @@
                                         <div class="product">
                                             <span class="product__new">New</span>
                                             <a href="#" class="product__img">
-                                                <img src="musica/assets/img/store/<?= $row['img']; ?>" alt>
+                                                <img src="admin/upload/<?= $row['upload_image']; ?>" alt>
                                             </a>
                                             <h3 class="product__title"><a href="product.html"><?= $row['title']; ?></a></h3>
                                             <span class="product__price"><?= $row['amount']; ?></span>

@@ -29,10 +29,11 @@ $store_insert = [
         "title" => "Price",
         "global_class" => "col-md-4",
         "name" => "amount",
-        "placeholder" => "Enter Price",
+        "placeholder" => "Enter Price ($)",
         "is_required" => true,
         "input_type" => "text",
-        "type" => "input"
+        "type" => "input",
+        "value" => "$"
     ],
 
     "availability" => ["options" => ["in stock" => "In Stock", "out of stock" => "Out of Stock"], "type" => "select"],

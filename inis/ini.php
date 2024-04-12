@@ -66,11 +66,13 @@ $date = date('Y-m-d');
     }
 // Echo
     // $user_ID = $userID;
-    $product_cart = $d->getall("cart", "userID = ?", [$userID], fetch: "moredetails");
+    $passengers = $d->fastgetwhere("contact", "label = ?", "1", "moredetails");
+
     if(isset($_GET['pID'])){
         $product_id = $_GET['pID'];
-        $delete_products = $d->delete("cart", "productID = ?", [$product_id]);
+        $delete_products = $d->delete("contact", "userID = ?", [$product_id]);
     }
+
 
     $artist_rows = $d->getall("users", "status = ?", ['artist'], fetch: "moredetails");
     $recent_play = $d->getall("playlist", "label = ?", ['recent'], fetch: "moredetails");

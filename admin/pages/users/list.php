@@ -49,4 +49,7 @@
       <!-- /.row -->
   </section>
 
+  $balance = 1234567.89; // Example balance value
+
+echo number_format($balance, 2, '.', ','); // Output: 1,234,567.89
  

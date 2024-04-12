@@ -1,42 +1,42 @@
 <?php
 class users extends database {
-    function getadminusers($userID , $type="users", $datefrom = "", $dateto = ""){
+    function getadminusers($userID, $type = "users", $datefrom = "", $dateto = "")
+    {
         $d = new database;
-        $user = array();
+        $users = array();
         $user = $this->getall("admins", "ID = ?", [$userID], fetch: "details");
-        
+    
         // Get user assign to user
-        if($user['type'] == "admin"){
-            
-            if($datefrom != "" && $dateto != ""){
+        if ($user && is_array($user) && $user['type'] == "admin") {
+    
+            if ($datefrom != "" && $dateto != "") {
                 $users = $this->getall("$type", "date >= ? and date <= ?", [$datefrom, $dateto], fetch: "moredetails");
-            }else{
-                
-                   $users = $this->getall("$type", "date", fetch: "moredetails");
-                // $users = $this->getall("$type", "date", fetch: "moredetails");
+            } else {
+    
+                $users = $this->getall("$type", "date", fetch: "moredetails");
             }
-            
-        }else{
-            if($datefrom != "" && $dateto != ""){
+    
+        } elseif ($user && is_array($user)) {
+            if ($datefrom != "" && $dateto != "") {
                 $asign = $d->getall("people_assign", "adminID = ? and type = ? and date >= ? and date <= ?", [$userID, $type, $datefrom, $dateto], fetch: "moredetails");
-            }else{
+            } else {
                 $asign = $d->getall("people_assign", "adminID = ? and type = ?", [$userID, $type], fetch: "moredetails");
             }
-            
-            if(!empty($asign)){
-                foreach($asign as $row){
+    
+            if (!empty($asign)) {
+                foreach ($asign as $row) {
                     $user_id = $row['userID'];
                     $user = $d->getall("$type", "ID = ?", [$user_id], fetch: "details");
-                    if(is_array($user)){
+                    if ($user && is_array($user)) {
                         $users[] = $user;
                     }
                 }
             }
         }
-        // var_dump($user);
+    
         return $users;
     }
-
+    
 
     
     function newfollow($userid){

@@ -185,6 +185,25 @@ function getsettings($meta_name){
       
   }
 
+//   function getusername($id){
+//     $user_data = $this->getall("users", "ID = ?", [$id], fetch: "details");
+//     $admin_data = $this->getall("admins", "ID = ?", [$id], fetch: "details");
+
+//     if(is_array($user_data)){
+//         return $user_data['first_name'].' '.$user_data['last_name'];
+//     } elseif(is_array($admin_data)) {
+//         return $admin_data['first_name'].' '.$admin_data['last_name'];
+//     } else {
+//         $group_data = $this->getall("grouped", "ID = ?", [$id], fetch: "details");
+//         if(is_array($group_data)){
+//             return $group_data['group_name'];
+//         } else {
+//             return "Not found";
+//         }
+//     }
+// }
+
+
 
 
 // To get number of trending in playlist
@@ -836,13 +855,22 @@ function getsettings($meta_name){
         }
 }
 
-function userID($type = "admin"){
-    if($type == "users" || $type == "customers"){
-        return  $this->userID = htmlspecialchars($_SESSION['userSession']);  
-    }else{
-        return  $this->userID = htmlspecialchars($_SESSION['adminSession']);  
+// function userID($type = "admin"){
+//     if($type == "users" || $type == "customers"){
+//         return  $this->userID = htmlspecialchars($_SESSION['userSession']);  
+//     }else{
+//         return  $this->userID = htmlspecialchars($_SESSION['adminSession']);  
+//     }
+// }
+
+function userID($type = "admin") {
+    if ($type == "users" || $type == "customers") {
+        return isset($_SESSION['userSession']) ? htmlspecialchars($_SESSION['userSession']) : null;
+    } else {
+        return isset($_SESSION['adminSession']) ? htmlspecialchars($_SESSION['adminSession']) : null;
     }
 }
+
 
 
     function randcar($no = 20)

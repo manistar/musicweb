@@ -4,7 +4,7 @@ $start = 0;
 if(isset($_GET['s'])) {
   $start = (int)htmlspecialchars($_GET['s']);
 }
-$ads = $d->getall("products", "date != ? order by date desc LIMIT $start, 5", [""], fetch: "moredetails");;?>
+$ads = $d->getall("products", "date != ? order by date desc LIMIT $start, 5", [""], fetch: "moredetails");?>
 
 <style>
   input[type="checkbox"] {
